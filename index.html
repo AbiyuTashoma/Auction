@@ -13,13 +13,30 @@
         <p>Auction</p>
         <p>Get it done!</p>
       </div>
-      <div>
-        <p>Login</p>
+      <div class="dropdown-center">
+        <button
+          class="custom-btn btn-primary dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Login</a></li>
+          <li><a class="dropdown-item" href="#">Register</a></li>
+          <li><a class="dropdown-item" href="#">Contact us</a></li>
+          <li><a class="dropdown-item" href="#">About us</a></li>
+        </ul>
       </div>
     </header>
     <main>
       <section>
-        <p>Latest</p>
+        <select class="form-select" aria-label="filter-select">
+          <option value="1" selected>Latest</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
         <p>Search</p>
       </section>
       <section>
