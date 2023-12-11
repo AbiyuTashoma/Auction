@@ -1,0 +1,7 @@
+.custom-btn {
+  @extend .btn;
+
+  &:hover {
+    background-color: $btn-hover-clr;
+  }
+}
