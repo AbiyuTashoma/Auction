@@ -11,8 +11,10 @@
   <body>
     <header>
       <div class="logo-container">
-        <p>Auction</p>
-        <p>Get it done!</p>
+        <a href="../../index.html">
+          <p>Auction</p>
+          <p>Get it done!</p>
+        </a>
       </div>
       <div class="dropdown-center">
         <button
@@ -39,7 +41,51 @@
     </header>
     <main>
       <section>
-        <h1>Register</h1>
+        <form class="register-form mx-auto" style="max-width: 400px">
+          <div class="mb-3">
+            <label for="register-name" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="register-name"
+              aria-describedby="nameHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="register-email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="register-email"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="register-avatar" class="form-label">Avatar</label>
+            <input
+              type="url"
+              class="form-control"
+              id="register-avatar"
+              aria-describedby="avatarHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="register-password" class="form-label"
+              >Create Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="register-password"
+              aria-describedby="passwordHelp"
+            />
+          </div>
+          <div class="text-center">
+            <button type="submit" class="custom-btn btn-primary">
+              Register
+            </button>
+          </div>
+        </form>
       </section>
     </main>
     <footer class="d-flex justify-content-center">

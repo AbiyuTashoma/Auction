@@ -11,8 +11,10 @@
   <body>
     <header>
       <div class="logo-container">
-        <p>Auction</p>
-        <p>Get it done!</p>
+        <a href="../../index.html">
+          <p>Auction</p>
+          <p>Get it done!</p>
+        </a>
       </div>
       <div class="dropdown-center">
         <button
@@ -37,7 +39,37 @@
     </header>
     <main>
       <section>
-        <h1>Contact us</h1>
+        <form class="contact-form mx-auto" style="max-width: 400px">
+          <div class="mb-3">
+            <label for="contact-name" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="contact-name"
+              aria-describedby="nameHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="contact-email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="contact-email"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="contact-message" class="form-label">Message</label>
+            <textarea
+              class="form-control"
+              id="contact-message"
+              aria-describedby="messageHelp"
+            ></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="custom-btn btn-primary">Submit</button>
+          </div>
+        </form>
       </section>
     </main>
     <footer class="d-flex justify-content-center">
