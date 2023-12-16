@@ -5,44 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/dist/css/index.css" />
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet"> -->
     <title>Auction | Home</title>
   </head>
-  <body>
+  <body class="body-background">
     <header>
-      <div class="logo-container">
-        <a href="#">
-          <p>Auction</p>
-          <p>Get it done!</p>
-        </a>
-      </div>
-      <div class="dropdown-center">
-        <button
-          type="button"
-          class="custom-btn btn-primary position-relative dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          User menu
-          <span
-            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
-            >+99 <span class="visually-hidden">unread messages</span></span
+      <section class="header-section d-flex justify-content-between">
+        <div class="m-4">
+          <a class="logo text-decoration-none" href="#">
+            <p class="auction">Auction</p>
+            <p class="moto">Get it done!</p>
+          </a>
+        </div>
+        <div class="dropdown-center m-4 p-4">
+          <button
+            type="button"
+            class="custom-btn btn-primary position-relative dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
           >
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="src/html/login.html">Login</a></li>
-          <li>
-            <a class="dropdown-item" href="src/html/register.html">Register</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="src/html/contact-us.html"
-              >Contact us</a
+            User menu
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+              >+99 <span class="visually-hidden">unread messages</span></span
             >
-          </li>
-          <li>
-            <a class="dropdown-item" href="src/html/about-us.html">About us</a>
-          </li>
-        </ul>
-      </div>
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="src/html/login.html">Login</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="src/html/register.html"
+                >Register</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="src/html/contact-us.html"
+                >Contact us</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="src/html/about-us.html"
+                >About us</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
     </header>
     <main>
       <section>
