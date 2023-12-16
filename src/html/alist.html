@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/dist/css/index.css" />
+    <title>Auction | Home</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo-container">
+        <a href="../../index.html">
+          <p>Auction</p>
+          <p>Get it done!</p>
+        </a>
+      </div>
+      <div class="dropdown-center">
+        <button
+          type="button"
+          class="custom-btn btn-primary position-relative dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          User menu
+          <span
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+            >+99 <span class="visually-hidden">unread messages</span></span
+          >
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="login.html">Login</a></li>
+          <li>
+            <a class="dropdown-item" href="register.html">Register</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="contact-us.html">Contact us</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="about-us.html">About us</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <section>
+        <div class="row">
+          <div class="col">
+            <select class="form-select" aria-label="filter-select">
+              <option value="1" selected>Latest</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="col">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="search">search</span>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search"
+                aria-label="Search"
+                aria-describedby="Search"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="card" style="max-width: 540px">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="..." class="img-fluid rounded-start" alt="..." />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card</p>
+                <p class="card-text">This is a wider card</p>
+                <a href="#" class="custom-btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <small class="text-body-secondary">Last updated 3 mins ago</small>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="d-flex justify-content-center">
+      <p>Buy</p>
+      <p>Sell</p>
+      <p>Login</p>
+      <p>Register</p>
+      <p>Contact us</p>
+      <p>About us</p>
+      <p>Follow us on: "Social media"</p>
+      <p>&#169; Auction 2024</p>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
