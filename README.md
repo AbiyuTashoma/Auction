@@ -1,4 +1,5 @@
 # Auction
+
 ## Description
 
 Auction website Semister Project
@@ -15,7 +16,7 @@ Auction website Semister Project
 - Unit testing with Jest
 - End-to-End testing with Cypress
 - Automated testing and Branch protection
-  
+
 ## Built With
 
 - Figma
@@ -28,12 +29,18 @@ Auction website Semister Project
 
 ## Running
 
-To get started clone the repo:
+To get started, follow one the following options
+
+1. visit https://willowy-sprite-8d01d2.netlify.app/
+
+2. clone the repo:
 
 ```
 https://github.com/AbiyuTashoma/Auction
 ```
+
 and then
+
 ```
 - npm run start
 - npm run test
