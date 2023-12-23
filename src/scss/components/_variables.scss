@@ -1,0 +1,21 @@
+//variables
+$primary: rgb(147, 15, 15);
+$btn-hover-clr: rgb(221, 42, 42);
+
+//main
+$main-background: rgb(238, 238, 238);
+
+//header
+$logo-color: rgb(255, 255, 255);
+@import url("https://fonts.googleapis.com/css2?family=Amarante&display=swap");
+
+//dropdown
+$dropdown-bg: $btn-hover-clr;
+$dropdown-link-color: rgb(255, 255, 255);
+$dropdown-link-hover-bg: $primary;
+
+//cards
+$card-height: 100%;
+
+//footer
+$footer-background: rgb(200, 199, 199);

@@ -1,0 +1,8 @@
+.custom-btn {
+  @extend .btn;
+
+  &:hover {
+    background-color: $btn-hover-clr;
+    transition-duration: 0.5s;
+  }
+}

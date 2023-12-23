@@ -1,0 +1,26 @@
+.footer-style {
+  background-color: $footer-background;
+}
+
+.social-media {
+  max-height: 1.5em;
+  border: solid thin gray;
+  border-radius: 2px;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+
+  &:hover {
+    cursor: pointer;
+    background-color: gray;
+  }
+}
+
+.footer-link {
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
