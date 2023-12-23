@@ -8,40 +8,42 @@
     <title>Auction | Home</title>
   </head>
 
-  <body>
+  <body class="body-style">
     <header>
-      <div class="logo-container">
-        <a href="../../index.html">
-          <p>Auction</p>
-          <p>Get it done!</p>
-        </a>
-      </div>
-      <div class="dropdown-center">
-        <button
-          type="button"
-          class="custom-btn btn-primary position-relative dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          User menu
-          <span
-            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
-            >+99 <span class="visually-hidden">unread messages</span></span
+      <section class="header-section d-flex justify-content-between">
+        <div class="m-4">
+          <a class="logo text-decoration-none" href="../../index.html">
+            <p class="auction">Auction</p>
+            <p class="moto">Get it done!</p>
+          </a>
+        </div>
+        <div class="dropdown-center m-4 p-4">
+          <button
+            type="button"
+            class="custom-btn btn-primary position-relative dropdown-toggle border border-white"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
           >
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Login</a></li>
-          <li><a class="dropdown-item" href="register.html">Register</a></li>
-          <li>
-            <a class="dropdown-item" href="contact-us.html">Contact us</a>
-          </li>
-          <li><a class="dropdown-item" href="about-us.html">About us</a></li>
-        </ul>
-      </div>
+            User menu
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+              >+99 <span class="visually-hidden">unread messages</span></span
+            >
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Login</a></li>
+            <li><a class="dropdown-item" href="register.html">Register</a></li>
+            <li>
+              <a class="dropdown-item" href="contact-us.html">Contact us</a>
+            </li>
+            <li><a class="dropdown-item" href="about-us.html">About us</a></li>
+          </ul>
+        </div>
+      </section>
     </header>
-    <main>
+    <main class="main-style pb-3 pb-lg-5 pt-3 pt-lg-5">
       <section>
-        <form class="login-form mx-auto" style="max-width: 400px">
+        <form class="login-form mx-auto" style="max-width: 415px">
           <div class="mb-3">
             <label for="login-email" class="form-label">Email</label>
             <input
@@ -61,15 +63,40 @@
         </form>
       </section>
     </main>
-    <footer class="d-flex justify-content-center">
-      <p>Buy</p>
-      <p>Sell</p>
-      <p>Login</p>
-      <p>Register</p>
-      <p>Contact us</p>
-      <p>About us</p>
-      <p>Follow us on: "Social media"</p>
-      <p>&#169; Auction 2024</p>
+    <footer class="footer-style pt-3">
+      <p class="text-center">&#169; Auction 2024</p>
+      <div class="d-flex justify-content-center gap-3 m-3">
+        <a href="../../index.html" class="footer-link">Home</a>
+        <a href="login.html" class="footer-link">Login</a>
+        <a href="register.html" class="footer-link">Register</a>
+        <a href="contact-us.html" class="footer-link">Contact us</a>
+        <a href="about-us.html" class="footer-link">About us</a>
+      </div>
+      <div class="text-center pb-3">
+        <div class="d-flex justify-content-center">
+          <p class="m-0">Follow us on:</p>
+          <img
+            src="../image/social-media/facebook.png"
+            class="social-media mx-1"
+            alt="facebook"
+          />
+          <img
+            src="../image/social-media/snapchat.png"
+            class="social-media mx-1"
+            alt="snapchat"
+          />
+          <img
+            src="../image/social-media/tik-tok.png"
+            class="social-media mx-1"
+            alt="tik-tok"
+          />
+          <img
+            src="../image/social-media/instagram.png"
+            class="social-media mx-1"
+            alt="instagram"
+          />
+        </div>
+      </div>
     </footer>
 
     <script

@@ -8,72 +8,103 @@
     <title>Auction | Home</title>
   </head>
 
-  <body>
+  <body class="body-style">
     <header>
-      <div class="logo-container">
-        <a href="../../index.html">
-          <p>Auction</p>
-          <p>Get it done!</p>
-        </a>
-      </div>
-      <div class="dropdown-center">
-        <button
-          type="button"
-          class="custom-btn btn-primary position-relative dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          User menu
-          <span
-            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
-            >+99 <span class="visually-hidden">unread messages</span></span
+      <section class="header-section d-flex justify-content-between">
+        <div class="m-4">
+          <a class="logo text-decoration-none" href="../../index.html">
+            <p class="auction">Auction</p>
+            <p class="moto">Get it done!</p>
+          </a>
+        </div>
+        <div class="dropdown-center m-4 p-4">
+          <button
+            type="button"
+            class="custom-btn btn-primary position-relative dropdown-toggle border border-white"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
           >
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="login.html">Login</a></li>
-          <li>
-            <a class="dropdown-item" href="register.html">Register</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="contact-us.html">Contact us</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="about-us.html">About us</a>
-          </li>
-        </ul>
-      </div>
-    </header>
-    <main>
-      <section>
-        <div class="row">
-          <div class="col">
-            <select class="form-select" aria-label="filter-select">
-              <option value="1" selected>Latest</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="col">
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="search">search</span>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Search"
-                aria-label="Search"
-                aria-describedby="Search"
-              />
-            </div>
-          </div>
+            User menu
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+              >+99 <span class="visually-hidden">unread messages</span></span
+            >
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="login.html">Login</a></li>
+            <li>
+              <a class="dropdown-item" href="register.html">Register</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="contact-us.html">Contact us</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="about-us.html">About us</a>
+            </li>
+          </ul>
         </div>
       </section>
+    </header>
+    <main class="main-style pt-3 pb-3 pb-lg-5 pt-3 pt-lg-5">
       <section>
-        <div class="card" style="max-width: 540px">
+        <div class="card">
           <div class="row g-0">
-            <div class="col-md-4">
-              <img src="..." class="img-fluid rounded-start" alt="..." />
+            <div class="col-md-5">
+              <div
+                id="carouselExampleAutoplaying"
+                class="carousel slide"
+                data-bs-ride="carousel"
+              >
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img
+                      src="../temp/car/joshua-koblin-eqW1MPinEV4-unsplash.jpg"
+                      class="card-img-top d-block w-100"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../temp/car/martin-katler-WBsl72esyVo-unsplash.jpg"
+                      class="card-img-top d-block w-100"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../temp/car/brandon-atchison-_DzW3MT-iIY-unsplash.jpg"
+                      class="card-img-top d-block w-100"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselExampleAutoplaying"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselExampleAutoplaying"
+                  data-bs-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-7">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This is a wider card</p>
@@ -88,15 +119,40 @@
         </div>
       </section>
     </main>
-    <footer class="d-flex justify-content-center">
-      <p>Buy</p>
-      <p>Sell</p>
-      <p>Login</p>
-      <p>Register</p>
-      <p>Contact us</p>
-      <p>About us</p>
-      <p>Follow us on: "Social media"</p>
-      <p>&#169; Auction 2024</p>
+    <footer class="footer-style pt-3">
+      <p class="text-center">&#169; Auction 2024</p>
+      <div class="d-flex justify-content-center gap-3 m-3">
+        <a href="../../index.html" class="footer-link">Home</a>
+        <a href="login.html" class="footer-link">Login</a>
+        <a href="register.html" class="footer-link">Register</a>
+        <a href="contact-us.html" class="footer-link">Contact us</a>
+        <a href="about-us.html" class="footer-link">About us</a>
+      </div>
+      <div class="text-center pb-3">
+        <div class="d-flex justify-content-center">
+          <p class="m-0">Follow us on:</p>
+          <img
+            src="../image/social-media/facebook.png"
+            class="social-media mx-1"
+            alt="facebook"
+          />
+          <img
+            src="../image/social-media/snapchat.png"
+            class="social-media mx-1"
+            alt="snapchat"
+          />
+          <img
+            src="../image/social-media/tik-tok.png"
+            class="social-media mx-1"
+            alt="tik-tok"
+          />
+          <img
+            src="../image/social-media/instagram.png"
+            class="social-media mx-1"
+            alt="instagram"
+          />
+        </div>
+      </div>
     </footer>
 
     <script
