@@ -43,51 +43,64 @@
     </header>
     <main class="main-style pb-3 pb-lg-5 pt-3 pt-lg-5">
       <section>
-        <form class="register-form mx-auto" style="max-width: 415px">
-          <div class="mb-3">
-            <label for="register-name" class="form-label">Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="register-name"
-              aria-describedby="nameHelp"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="register-email" class="form-label">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="register-email"
-              aria-describedby="emailHelp"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="register-avatar" class="form-label">Avatar</label>
-            <input
-              type="url"
-              class="form-control"
-              id="register-avatar"
-              aria-describedby="avatarHelp"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="register-password" class="form-label"
-              >Create Password</label
-            >
-            <input
-              type="password"
-              class="form-control"
-              id="register-password"
-              aria-describedby="passwordHelp"
-            />
-          </div>
-          <div class="text-center">
-            <button type="submit" class="custom-btn btn-primary">
-              Register
-            </button>
-          </div>
-        </form>
+        <div class="container col-11 col-sm-6 col-xl-4">
+          <div class="feedback-success"></div>
+          <form class="register-form">
+            <div class="mb-3">
+              <label for="register-name" class="form-label">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="register-name"
+                aria-describedby="nameHelp"
+                placeholder="enter your name"
+              />
+              <div class="note-name"></div>
+            </div>
+            <div class="mb-3">
+              <label for="register-email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="register-email"
+                aria-describedby="emailHelp"
+                placeholder="enter your email"
+              />
+              <div class="note-email"></div>
+            </div>
+            <div class="mb-3">
+              <label for="register-password" class="form-label"
+                >Create Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="register-password"
+                aria-describedby="passwordHelp"
+                placeholder="enter your password"
+              />
+              <div class="note-password"></div>
+            </div>
+            <div class="mb-3">
+              <label for="register-avatar" class="form-label"
+                >Avatar <i class="fs-6">(Optional)</i></label
+              >
+              <input
+                type="url"
+                class="form-control"
+                id="register-avatar"
+                aria-describedby="avatarHelp"
+                placeholder="enter url"
+              />
+              <div class="note-avatar"></div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="custom-btn btn-primary">
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
       </section>
     </main>
     <footer class="footer-style pt-3">
@@ -131,5 +144,10 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <!-- <script type="module" src="../js/components/variables.js"></script>
+    <script type="module" src="../js/components/validate.js"></script>
+    <script type="module" src="../js/components/displayMessage.js"></script>
+    <script type="module" src="../js/components/apirequest.js"></script> -->
+    <script type="module" src="../js/register.js"></script>
   </body>
 </html>
