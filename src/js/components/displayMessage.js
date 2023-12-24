@@ -18,5 +18,3 @@ export function clearFeedback(noteContainer, inputContainer) {
   noteContainer.innerHTML = "";
   inputContainer.style.borderColor = "";
 }
-
-// export { setFeedback, clearFeedback };
