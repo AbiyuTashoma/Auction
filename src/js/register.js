@@ -105,7 +105,7 @@ async function validate(event) {
     const registerData = {
       name: `${userName}`,
       email: `${email}`,
-      password: `${password}`, //"theusualcode"
+      password: `${password}`,
       avatar: `${url}`,
     };
 

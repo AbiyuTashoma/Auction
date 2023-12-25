@@ -1,12 +1,13 @@
 import { apiRequest } from "./components/apirequest.js";
 import { loginURL } from "./components/variables.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
+import { currentUser } from "./components/profile.js";
+
+console.log(currentUser);
 
 const loginEmailContainer = document.querySelector("#login-email");
 const loginPasswordContainer = document.querySelector("#login-password");
-
 const feedbackErrorContainer = document.querySelector(".feedback-error");
-
 const loginFormContainer = document.querySelector(".login-form");
 
 //clear error message oninput
@@ -46,9 +47,12 @@ async function loginUser(event) {
 
   if (loginResponse["json"]["name"]) {
     console.log("Login successful");
-    localStorage.setItem("accessToken", loginResponse["json"]["accessToken"]);
+    localStorage.setItem(
+      "accessToken",
+      JSON.stringify(loginResponse["json"]["accessToken"]),
+    );
     delete loginResponse["json"]["accessToken"];
-    localStorage.setItem("currentUser", loginResponse["json"]);
+    localStorage.setItem("user", JSON.stringify(loginResponse["json"]));
     window.open("../../index.html", "_self");
   } else {
     console.log("Invalid email or password");
