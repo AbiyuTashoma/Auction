@@ -24,14 +24,21 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            User menu
+            <span class="user-menu">Menu</span>
             <span
-              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
-              >+99 <span class="visually-hidden">unread messages</span></span
-            >
+              class="credits position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+              >+0
+            </span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="login.html">Login</a></li>
+            <li>
+              <a class="login-btn dropdown-item" href="login.html">Login</a>
+            </li>
+            <li>
+              <a class="logout-btn dropdown-item" href="../../index.html"
+                >Logout</a
+              >
+            </li>
             <li><a class="dropdown-item" href="register.html">Register</a></li>
             <li><a class="dropdown-item" href="#">Contact us</a></li>
             <li><a class="dropdown-item" href="about-us.html">About us</a></li>
@@ -115,5 +122,6 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="../js/update.js"></script>
   </body>
 </html>
