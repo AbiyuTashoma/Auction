@@ -23,15 +23,20 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            User menu
+            <span class="user-menu">User menu</span>
             <span
-              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
-              >+0 <span class="visually-hidden">unread messages</span></span
-            >
+              class="credits position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+              >+0
+            </span>
           </button>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="src/html/login.html">Login</a>
+              <a class="login-btn dropdown-item" href="src/html/login.html"
+                >Login</a
+              >
+            </li>
+            <li>
+              <a class="logout-btn dropdown-item" href="index.html">Logout</a>
             </li>
             <li>
               <a class="dropdown-item" href="src/html/register.html"
@@ -652,5 +657,6 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="./src/js/update.js"></script>
   </body>
 </html>

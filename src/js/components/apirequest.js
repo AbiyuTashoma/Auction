@@ -15,5 +15,3 @@ export async function apiRequest(apiURL, requestOption) {
     return { output: "error", error: error };
   }
 }
-
-// export { apiRequest };
