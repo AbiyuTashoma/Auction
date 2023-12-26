@@ -1,5 +1,6 @@
 import { currentUser, isLoggedIn } from "./components/profile.js";
 import { renderUser } from "./components/renderView.js";
+import { logout } from "./components/logout.js";
 import {
   userMenuContainer,
   creditContainer,
@@ -15,3 +16,5 @@ renderUser(
   loginBtn,
   logoutBtn,
 );
+
+logoutBtn.addEventListener("click", logout);
