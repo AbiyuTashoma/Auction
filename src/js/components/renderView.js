@@ -7,7 +7,7 @@ export function renderUser(
   lgtBtn,
 ) {
   if (status) {
-    usrName.innerHTML = userPfl["name"];
+    usrName.innerHTML = `${userPfl["name"]}  <img src="${userPfl["avatar"]}" class="avatar-small" alt="avatar"/>`;
     cdtContainer.innerHTML = userPfl["credits"];
     lgnBtn.style.display = "none";
     lgtBtn.style.display = "block";
