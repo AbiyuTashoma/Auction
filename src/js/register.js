@@ -7,6 +7,7 @@ import {
   validateLength,
 } from "./components/validate.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
+import { defaultAvatar } from "./components/variables.js";
 
 const registerNameContainer = document.querySelector("#register-name");
 const registerEmailContainer = document.querySelector("#register-email");
@@ -52,7 +53,7 @@ async function validate(event) {
   const userName = registerNameContainer.value;
   const email = registerEmailContainer.value;
   const password = registerPasswordContainer.value;
-  const url = registerAvatarContainer.value;
+  let url = registerAvatarContainer.value;
 
   const validName = validateName(userName, 5);
   const validEmail = validateEmail(email);
@@ -89,6 +90,8 @@ async function validate(event) {
         "text-danger",
       );
     }
+  } else {
+    url = defaultAvatar;
   }
 
   if (!validPassword) {
