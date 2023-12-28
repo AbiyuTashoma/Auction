@@ -46,7 +46,9 @@
                 >Profile</a
               >
             </li>
-            <li><a class="dropdown-item" href="#">Contact us</a></li>
+            <li>
+              <a class="dropdown-item" href="contact-us.html">Contact us</a>
+            </li>
             <li><a class="dropdown-item" href="about-us.html">About us</a></li>
             <li>
               <a
@@ -60,38 +62,8 @@
       </section>
     </header>
     <main class="main-style pb-3 pb-lg-5 pt-3 pt-lg-5">
-      <section>
-        <form class="contact-form mx-auto" style="max-width: 415px">
-          <div class="mb-3">
-            <label for="contact-name" class="form-label">Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="contact-name"
-              aria-describedby="nameHelp"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="contact-email" class="form-label">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="contact-email"
-              aria-describedby="emailHelp"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="contact-message" class="form-label">Message</label>
-            <textarea
-              class="form-control"
-              id="contact-message"
-              aria-describedby="messageHelp"
-            ></textarea>
-          </div>
-          <div class="text-center">
-            <button type="submit" class="custom-btn btn-primary">Submit</button>
-          </div>
-        </form>
+      <section class="mx-auto" style="max-width: 415px">
+        <div class="profile-info text-center"></div>
       </section>
     </main>
     <footer class="footer-style pt-3">
@@ -135,6 +107,7 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="../js/profile.js"></script>
     <script type="module" src="../js/update.js"></script>
   </body>
 </html>

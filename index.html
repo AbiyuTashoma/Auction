@@ -31,16 +31,22 @@
           </button>
           <ul class="dropdown-menu">
             <li>
-              <a class="login-btn dropdown-item" href="src/html/login.html"
+              <a
+                class="login-btn logged-out dropdown-item"
+                href="src/html/login.html"
                 >Login</a
               >
             </li>
             <li>
-              <a class="logout-btn dropdown-item" href="index.html">Logout</a>
+              <a class="logged-out dropdown-item" href="src/html/register.html"
+                >Register</a
+              >
             </li>
             <li>
-              <a class="dropdown-item" href="src/html/register.html"
-                >Register</a
+              <a
+                class="profile-btn logged-in dropdown-item"
+                href="src/html/profile.html"
+                >Profile</a
               >
             </li>
             <li>
@@ -53,11 +59,16 @@
                 >About us</a
               >
             </li>
+            <li>
+              <a class="logout-btn logged-in dropdown-item" href="index.html"
+                >Logout</a
+              >
+            </li>
           </ul>
         </div>
       </section>
     </header>
-    <main class="main-style pt-3 overflow-x-hidden pb-3 pb-lg-5">
+    <main class="main-style pt-3 pb-3 pb-lg-5">
       <section>
         <div
           class="container row m-auto mt-2 mb-3 mt-lg-3 mb-lg-4"
@@ -90,7 +101,7 @@
         </div>
       </section>
       <section>
-        <div class="row row-cols-1 row-cols-sm-3 row-cols-lg-5 g-4">
+        <div class="row row-cols-1 row-cols-sm-3 row-cols-lg-5 g-4 m-0">
           <div class="col">
             <div class="card h-100">
               <div

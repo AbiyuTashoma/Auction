@@ -5,6 +5,9 @@ export const defaultAvatar =
   "https://robohash.org/5f735a19afe448937c8ff46ab8c6c3ea?set=set4&bgset=&size=400x400";
 
 export const loginBtn = document.querySelector(".login-btn");
+export const loggedOutContainer = document.querySelectorAll(".logged-out");
+export const loggedInContainer = document.querySelectorAll(".logged-in");
 export const logoutBtn = document.querySelector(".logout-btn");
 export const userMenuContainer = document.querySelector(".user-menu");
 export const creditContainer = document.querySelector(".credits");
+export const profileInfoContainer = document.querySelector(".profile-info");

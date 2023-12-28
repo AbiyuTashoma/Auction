@@ -1,7 +1,7 @@
 import { apiRequest } from "./components/apirequest.js";
 import { loginURL } from "./components/variables.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
-import { currentUser } from "./components/profile.js";
+import { currentUser } from "./components/profileData.js";
 
 console.log(currentUser);
 
