@@ -1,20 +1,5 @@
-import { currentUser, isLoggedIn } from "./components/profileData.js";
-import { renderUser } from "./components/renderUser.js";
-import { renderMenu } from "./components/renderMenu.js";
-import { logout } from "./components/logout.js";
-import {
-  userMenuContainer,
-  creditContainer,
-  loggedOutContainer,
-  logoutBtn,
-  loggedInContainer,
-  profileInfoContainer,
-} from "./components/variables.js";
+import { currentUser } from "./components/profileData.js";
+import { profileInfoContainer } from "./components/variables.js";
+import { viewProfile } from "./components/renderProfile.js";
 
-import { viewProfile } from "./components/renderProfile";
-
-renderUser(isLoggedIn, currentUser, userMenuContainer, creditContainer);
-renderMenu(isLoggedIn, loggedOutContainer, loggedInContainer);
 viewProfile(currentUser, profileInfoContainer);
-
-logoutBtn.addEventListener("click", logout);

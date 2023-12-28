@@ -1,11 +1,10 @@
 export function viewProfile(prfl, prflContainer) {
-  // const html = `<img src="${userPfl["avatar"]}" class="avatar-bigger" alt="avatar"/>
-  //           <p class="profile-name">${pfl["name"]}</p>
-  //           <p class="profile-credit">${pfl["credits"]}</p>`;
-
-  // return html;
-
-  prflContainer.innerHTML = `<img src="${prfl["avatar"]}" class="avatar-bigger" alt="avatar"/>
-            <p class="profile-name">${prfl["name"]}</p>
-            <p class="profile-credit">${prfl["credits"]}</p>`;
+  prflContainer.innerHTML = `<div class="avatar-container border position-relative mx-auto">
+                                <img src="${prfl["avatar"]}" class="avatar-bigger mx-auto" alt="avatar"/>
+                                <a class="custom-btn btn-primary position-absolute top-100 start-100 translate-middle badge rounded-pill">
+                                  edit
+                                </a>
+                             </div>
+            <p class="my-3">${prfl["name"]}</p>
+            <p class="my-3">${prfl["credits"]}</p>`;
 }
