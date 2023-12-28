@@ -8,9 +8,13 @@ import {
   loggedOutContainer,
   logoutBtn,
   loggedInContainer,
+  profileInfoContainer,
 } from "./components/variables.js";
+
+import { viewProfile } from "./components/renderProfile";
 
 renderUser(isLoggedIn, currentUser, userMenuContainer, creditContainer);
 renderMenu(isLoggedIn, loggedOutContainer, loggedInContainer);
+viewProfile(currentUser, profileInfoContainer);
 
 logoutBtn.addEventListener("click", logout);

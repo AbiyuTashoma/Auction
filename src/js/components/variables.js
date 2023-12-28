@@ -10,3 +10,4 @@ export const loggedInContainer = document.querySelectorAll(".logged-in");
 export const logoutBtn = document.querySelector(".logout-btn");
 export const userMenuContainer = document.querySelector(".user-menu");
 export const creditContainer = document.querySelector(".credits");
+export const profileInfoContainer = document.querySelector(".profile-info");
