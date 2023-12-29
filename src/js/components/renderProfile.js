@@ -1,7 +1,7 @@
 export function viewProfile(prfl, prflContainer) {
   prflContainer.innerHTML = `<div class="avatar-container border position-relative mx-auto">
                                 <img src="${prfl["avatar"]}" class="avatar-bigger mx-auto" alt="avatar"/>
-                                <a class="custom-btn btn-primary position-absolute top-100 start-100 translate-middle badge rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-edit">
+                                <a class="custom-btn btn-primary position-absolute top-100 start-100 translate-middle badge rounded-pill" id="edit-btn" data-bs-toggle="modal" data-bs-target="#modal-edit">
                                   edit
                                 </a>
                              </div>
@@ -14,7 +14,7 @@ export function viewProfile(prfl, prflContainer) {
                                   <div class="modal-content">
                                       <div class="modal-body p-3">
                                           <div class="note-update"></div>             
-                                          <form class="update-form">
+                                          <form id="update-form">
                                               <div class="input-group my-2">
                                                   <input type="url" id="edit-avatar" class="form-control" aria-label="edit avatar url" value='${prfl["avatar"]}'>
                                               </div>

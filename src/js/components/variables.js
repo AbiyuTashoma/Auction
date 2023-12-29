@@ -11,4 +11,3 @@ export const logoutBtn = document.querySelector(".logout-btn");
 export const userMenuContainer = document.querySelector(".user-menu");
 export const creditContainer = document.querySelector(".credits");
 export const profileInfoContainer = document.querySelector(".profile-info");
-export const updateAvatarContainer = document.querySelector(".update-form");
