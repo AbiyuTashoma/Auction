@@ -1,5 +1,14 @@
-import { apiRequest } from "./components/apirequest";
 import { feedURL } from "./components/variables";
+console.log(feedURL);
 
-const feedResponse = await apiRequest(feedURL);
-console.log(feedResponse);
+async function feed() {
+  const feedOption = {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  };
+  console.log(feedOption);
+}
+
+feed();
