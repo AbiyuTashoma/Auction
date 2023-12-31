@@ -25,7 +25,7 @@ export async function createFeedHtml(rspns) {
                         ${element["description"]}
                     </p>
                     <div class="text-center">
-                        <a href="src/html/alist.html" class="custom-btn btn-primary">Go somewhere</a>
+                        <a href="src/html/alist.html?id=${element["id"]}" class="custom-btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -40,7 +40,7 @@ export async function createFeedHtml(rspns) {
   return html;
 }
 
-function createCarousel(mda) {
+export function createCarousel(mda) {
   let carousel = "";
   let j = 0;
   let active = "active";
