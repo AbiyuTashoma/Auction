@@ -15,3 +15,6 @@ export const creditContainer = document.querySelector(".credits");
 export const profileInfoContainer = document.querySelector(".profile-info");
 export const feedContainer = document.querySelector(".feed");
 export const aListContainer = document.querySelector(".a-list");
+export const searchFormContainer = document.querySelector(".search-form");
+export const searchContainer = document.querySelector("#search");
+export const resultContainer = document.querySelector(".result");
