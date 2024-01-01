@@ -4,14 +4,14 @@ import {
   searchFormContainer,
   searchContainer,
   resultContainer,
+  sortByContainer,
 } from "./components/variables.js";
 import { apiRequest } from "./components/apirequest.js";
 import { createFeedHtml } from "./components/feedHtml.js";
 import { searchText } from "./components/search.js";
 
-async function loadFeed() {
-  const feedResponse = await apiRequest(feedURL);
-  console.log(feedResponse["json"]);
+async function loadFeed(srt = "created") {
+  const feedResponse = await apiRequest(feedURL + `&sort=${srt}`);
   feedContainer.innerHTML = await createFeedHtml(feedResponse["json"]);
 }
 
@@ -26,6 +26,12 @@ async function search(event) {
     feedContainer.innerHTML = await createFeedHtml(searchResult);
   }
 }
+
+sortByContainer.onchange = function () {
+  const sortValue = sortByContainer.value;
+  console.log(sortValue);
+  loadFeed(sortValue);
+};
 
 loadFeed();
 

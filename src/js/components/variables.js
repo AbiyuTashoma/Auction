@@ -18,3 +18,4 @@ export const aListContainer = document.querySelector(".a-list");
 export const searchFormContainer = document.querySelector(".search-form");
 export const searchContainer = document.querySelector("#search");
 export const resultContainer = document.querySelector(".result");
+export const sortByContainer = document.querySelector("#sortBy");
