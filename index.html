@@ -99,6 +99,78 @@
             <input type="search" class="form-control" id="search" />
           </form>
         </div>
+        <div class="container logged-in" style="max-width: 580px">
+          <button
+            class="form-control custom-btn btn-outline-primary mb-2"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#createlist"
+            aria-controls="createlist"
+            aria-expanded="false"
+            aria-label="Toggle create list"
+          >
+            <span>Create list +</span>
+          </button>
+          <div class="note-list"></div>
+          <form class="collapse" id="createlist">
+            <div class="input-group my-2">
+              <input
+                type="text"
+                id="list-title"
+                class="form-control"
+                aria-label="Add title"
+                placeholder="Title"
+              />
+            </div>
+            <div class="note-title mb-2"></div>
+            <div class="input-group my-2">
+              <textarea
+                id="list-body"
+                class="form-control"
+                aria-label="Add description"
+                placeholder="Description"
+              ></textarea>
+            </div>
+            <div class="input-group my-2">
+              <input
+                type="text"
+                id="list-tag"
+                class="form-control"
+                aria-label="Add tag"
+                placeholder="Add tags"
+              />
+            </div>
+            <div class="note-tag mb-2"></div>
+            <div type="url" class="input-group my-2">
+              <input
+                id="list-media"
+                class="form-control"
+                aria-label="Add media url"
+                placeholder="Image url"
+              />
+            </div>
+            <div class="note-media mb-2"></div>
+            <div class="input-group my-2">
+              <input
+                type="datetime-local"
+                id="post-enddate"
+                class="form-control"
+                aria-label="Ending date"
+              />
+            </div>
+            <div class="note-ending-date mb-2"></div>
+            <div class="row justify-content-center mt-2">
+              <div class="row col-10 col-sm-6 col-xl-3">
+                <input
+                  type="submit"
+                  id="list-btn"
+                  class="custom-btn btn-primary"
+                  value="List"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
       </section>
       <section>
         <div class="result text-center"></div>
