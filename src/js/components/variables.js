@@ -19,3 +19,15 @@ export const searchFormContainer = document.querySelector(".search-form");
 export const searchContainer = document.querySelector("#search");
 export const resultContainer = document.querySelector(".result");
 export const sortByContainer = document.querySelector("#sortBy");
+
+export const ListNoteContainer = document.querySelector(".note-createlist");
+export const createlistForm = document.querySelector("#createlist");
+export const titleContainer = document.querySelector("#list-title");
+export const titleNoteContainer = document.querySelector(".note-title");
+export const descriptionContainer = document.querySelector("#list-description");
+export const descriptionNoteContainer =
+  document.querySelector(".note-description");
+export const mediaContainer = document.querySelector("#list-media");
+export const mediaNoteContainer = document.querySelector(".note-media");
+export const enddateContainer = document.querySelector("#list-enddate");
+export const enddateNoteContainer = document.querySelector(".note-enddate");
