@@ -39,8 +39,8 @@ export function validateUrl(urlValue) {
   return urlMatch;
 }
 
-export function validateLength(txt, minLen = 8) {
+export function validateLength(txt, minLen = 8, maxLen = 500) {
   const actualLength = txt.length;
 
-  return actualLength >= minLen;
+  return actualLength >= minLen && actualLength <= maxLen;
 }

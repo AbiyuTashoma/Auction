@@ -29,7 +29,7 @@ async function search(event) {
 
 sortByContainer.onchange = function () {
   const sortValue = sortByContainer.value;
-  console.log(sortValue);
+  resultContainer.innerHTML = "";
   loadFeed(sortValue);
 };
 
