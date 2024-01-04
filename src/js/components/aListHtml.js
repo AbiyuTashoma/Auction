@@ -17,16 +17,29 @@ export async function createAListHtml(rspns) {
                 </button>
               </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-7 bg-light">
               <div class="card-body">
                 <h5 class="card-title">${rspns["title"]}</h5>
                 <p class="card-text">${rspns["description"]}</p>
-                <a href="#" class="custom-btn btn-primary">Go somewhere</a>
+                <p class="card-text">${rspns["endsAt"]}</p>
+                <p class="card-text">${rspns["_count"]["bids"]}</p>
+                <form class="register-form">
+                  <div class="mb-3">
+                    <label for="bid-value" class="form-label">Bid</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="bid-value"
+                      aria-describedby="bidHelp"
+                      min="${rspns["_count"]["bids"]}"
+                      placeholder="${rspns["_count"]["bids"]}"
+                      />
+                    <div class="note-bid"></div>
+                  </div>
+                  <a href="#" class="custom-btn btn-primary">Bid</a>
+                </form>
               </div>
             </div>
-          </div>
-          <div class="card-footer">
-            <small class="text-body-secondary">Last updated 3 mins ago</small>
           </div>
         </div>`;
 

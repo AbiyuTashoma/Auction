@@ -9,6 +9,7 @@ let productId = param.get("id");
 const aListURL = listingsURL + "/" + productId;
 async function getAList() {
   const listResponse = await apiRequest(aListURL);
+  console.log(listResponse["json"]);
   aListContainer.innerHTML = await createAListHtml(listResponse["json"]);
 }
 
