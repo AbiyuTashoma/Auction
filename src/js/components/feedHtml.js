@@ -2,7 +2,7 @@ export async function createFeedHtml(rspns) {
   let html = "";
   let i = 0;
   rspns.forEach((element) => {
-    const innerCarousel = createCarousel(element["media"]);
+    const innerCarousel = createCarousel(element["media"], element["id"]);
 
     html += `<div class="col">
             <div class="card h-100">
@@ -25,11 +25,8 @@ export async function createFeedHtml(rspns) {
                         ${element["description"]}
                     </p>
                     <div class="text-center">
-                        <a href="src/html/alist.html?id=${element["id"]}" class="custom-btn btn-primary">Go somewhere</a>
+                        <a href="src/html/alist.html?id=${element["id"]}" class="custom-btn btn-primary">View List</a>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <small class="text-body-secondary">Last updated 3 mins ago</small>
                 </div>
             </div>
         </div>`;
@@ -40,7 +37,7 @@ export async function createFeedHtml(rspns) {
   return html;
 }
 
-export function createCarousel(mda) {
+export function createCarousel(mda, eid) {
   let carousel = "";
   let j = 0;
   let active = "active";
@@ -48,9 +45,11 @@ export function createCarousel(mda) {
     if (j > 0) {
       active = "";
     }
-    carousel += `<div class="carousel-item ${active}"> 
+    carousel += `<div class="carousel-item ${active}">
+                        <a href="src/html/alist.html?id=${eid}">
                             <img src="${element}" class="card-img-top d-block w-100" alt="..."/>
-                        </div>`;
+                        </a>
+                    </div>`;
     j++;
   });
 
