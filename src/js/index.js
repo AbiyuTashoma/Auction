@@ -12,6 +12,7 @@ import { searchText } from "./components/search.js";
 
 async function loadFeed(srt = "created") {
   const feedResponse = await apiRequest(feedURL + `&sort=${srt}`);
+  console.log(feedResponse["json"]);
   feedContainer.innerHTML = await createFeedHtml(feedResponse["json"]);
 }
 
