@@ -89,6 +89,12 @@ async function createList(event) {
     };
 
     const listResponse = await apiRequest(listingsURL, listOption);
+    setFeedback(
+      ListNoteContainer,
+      ListNoteContainer,
+      `${listResponse["json"]["status"]}`,
+      "text-danger",
+    );
     console.log(listResponse);
   }
 }
