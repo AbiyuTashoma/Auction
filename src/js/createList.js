@@ -1,5 +1,5 @@
 import {
-  listinsURL,
+  listingsURL,
   createlistForm,
   ListNoteContainer,
   titleContainer,
@@ -88,7 +88,7 @@ async function createList(event) {
       },
     };
 
-    const listResponse = await apiRequest(listinsURL, listOption);
+    const listResponse = await apiRequest(listingsURL, listOption);
     console.log(listResponse);
   }
 }

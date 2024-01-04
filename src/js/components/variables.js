@@ -1,8 +1,8 @@
 export const BASE_URL = "https://api.noroff.dev/api/v1/auction";
 export const registerURL = BASE_URL + "/auth/register";
 export const loginURL = BASE_URL + "/auth/login";
-export const listinsURL = BASE_URL + "/listings";
-export const feedURL = listinsURL + "?_active=true";
+export const listingsURL = BASE_URL + "/listings";
+export const feedURL = listingsURL + "?_active=true";
 export const defaultAvatar =
   "https://robohash.org/5f735a19afe448937c8ff46ab8c6c3ea?set=set4&bgset=&size=400x400";
 
