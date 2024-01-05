@@ -2,7 +2,7 @@ export async function createAListHtml(rspns) {
   const innerCarousel = createListCarousel(rspns["media"]);
   const aHtml = `<div class="card">
           <div class="row g-0">
-            <div class="col-md-5">
+            <div class="col-md-6">
               <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   ${innerCarousel}                  
@@ -17,15 +17,14 @@ export async function createAListHtml(rspns) {
                 </button>
               </div>
             </div>
-            <div class="col-md-7 bg-light">
+            <div class="col-md-6 bg-light">
               <div class="card-body">
                 <h5 class="card-title">${rspns["title"]}</h5>
                 <p class="card-text">${rspns["description"]}</p>
-                <p class="card-text">${rspns["endsAt"]}</p>
-                <p class="card-text">${rspns["_count"]["bids"]}</p>
+                <p class="card-text">Bid ends: ${rspns["endsAt"]}</p>
+                <p class="card-text">Bid: ${rspns["_count"]["bids"]}</p>
                 <form class="register-form">
-                  <div class="mb-3">
-                    <label for="bid-value" class="form-label">Bid</label>
+                  <div class="mb-3" style="max-width: 300px;">
                     <input
                       type="number"
                       class="form-control"
@@ -35,8 +34,11 @@ export async function createAListHtml(rspns) {
                       placeholder="${rspns["_count"]["bids"]}"
                       />
                     <div class="note-bid"></div>
+                    <div class="text-center m-3">
+                      <button type="submit" class="custom-btn btn-primary">Bid</button>
+                    </div>
                   </div>
-                  <a href="#" class="custom-btn btn-primary">Bid</a>
+                  
                 </form>
               </div>
             </div>
