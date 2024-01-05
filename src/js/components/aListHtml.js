@@ -1,5 +1,11 @@
 export async function createAListHtml(rspns) {
   const innerCarousel = createListCarousel(rspns["media"]);
+  const endDate = truncate(rspns["endsAt"], 0, rspns["endsAt"].indexOf("T"));
+  const endHour = truncate(
+    rspns["endsAt"],
+    rspns["endsAt"].indexOf("T") + 1,
+    rspns["endsAt"].length - 2,
+  );
   const aHtml = `<div class="card">
           <div class="row g-0">
             <div class="col-md-6">
@@ -21,7 +27,7 @@ export async function createAListHtml(rspns) {
               <div class="card-body">
                 <h5 class="card-title">${rspns["title"]}</h5>
                 <p class="card-text">${rspns["description"]}</p>
-                <p class="card-text">Bid ends: ${rspns["endsAt"]}</p>
+                <p class="card-text">Bid ends: ${endDate} at ${endHour}</p>
                 <p class="card-text">Bid: ${rspns["_count"]["bids"]}</p>
                 <form class="register-form">
                   <div class="mb-3" style="max-width: 300px;">
@@ -63,4 +69,10 @@ export function createListCarousel(mda) {
   });
 
   return carousel;
+}
+
+export function truncate(source, from = 0, to = source.length) {
+  const trunc = source.slice(from, to);
+
+  return trunc;
 }
