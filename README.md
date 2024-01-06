@@ -10,6 +10,10 @@ Auction website Semister Project
 
 ![End-2-End test](https://github.com/AbiyuTashoma/Auction/actions/workflows/e2e-test.yml/badge.svg)
 
+## Deploy status badge
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2ce0667d-4337-4e5c-9794-3afaab5f02a9/deploy-status)](https://app.netlify.com/sites/willowy-sprite-8d01d2/deploys)
+
 ## Features
 
 - Designed and prototyped with Figma
