@@ -16,14 +16,14 @@ export async function getCurrentBid(rspns) {
   return rspns["_count"]["bids"];
 }
 
-export async function getNewBid(rspns, usr) {
+export async function getNewBid(rspns, cdt = 0) {
   return `<input type="number"
                   class="form-control"
                   id="bid-value"
                   aria-describedby="bidHelp"
                   min="${rspns["_count"]["bids"]}"
-                  max="${usr["credits"]}"
-                  placeholder="${rspns["_count"]["bids"]}"
+                  max="${cdt}"
+                  value="${rspns["_count"]["bids"] + 1}"
                   />`;
 }
 
