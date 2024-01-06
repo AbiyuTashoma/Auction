@@ -40,3 +40,14 @@ export const currentBid = document.querySelector(".current-bid");
 export const newBid = document.querySelector(".new-bid");
 export const bidForm = document.querySelector(".bid-form");
 export const bidNote = document.querySelector(".note-bid");
+
+export const contactForm = document.querySelector(".contact-form");
+export const contactSuccess = document.querySelector(".contact-success");
+export const contactName = document.querySelector("#contact-name");
+export const noteContactName = document.querySelector(".note-contactname");
+export const contactEmail = document.querySelector("#contact-email");
+export const noteContactEmail = document.querySelector(".note-contactemail");
+export const contactMessage = document.querySelector("#contact-message");
+export const noteContactMessage = document.querySelector(
+  ".note-contactmessage",
+);
