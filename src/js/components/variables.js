@@ -39,3 +39,4 @@ export const bidEnddate = document.querySelector(".bid-enddate");
 export const currentBid = document.querySelector(".current-bid");
 export const newBid = document.querySelector(".new-bid");
 export const bidForm = document.querySelector(".bid-form");
+export const bidNote = document.querySelector(".note-bid");

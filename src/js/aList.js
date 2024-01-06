@@ -7,6 +7,7 @@ import {
   currentBid,
   newBid,
   bidForm,
+  bidNote,
 } from "./components/variables.js";
 import { apiRequest } from "./components/apirequest.js";
 import {
@@ -16,7 +17,12 @@ import {
   getCurrentBid,
   getNewBid,
 } from "./components/aListHtml.js";
-import { currentUser, accessToken } from "./components/profileData.js";
+import {
+  currentUser,
+  accessToken,
+  isLoggedIn,
+} from "./components/profileData.js";
+import { setFeedback, clearFeedback } from "./components/displayMessage.js";
 
 const queryString = document.location.search;
 const param = new URLSearchParams(queryString);
@@ -35,32 +41,65 @@ async function getAList() {
   description.innerHTML = await getElement(listResponse["json"], "description");
   bidEnddate.innerHTML = await getEnddate(listResponse["json"]);
   currentBid.innerHTML = await getCurrentBid(listResponse["json"]);
-  newBid.innerHTML = await getNewBid(listResponse["json"], currentUser);
+  newBid.innerHTML = await getNewBid(
+    listResponse["json"],
+    currentUser["credits"],
+  );
 }
 
 async function bid(event) {
   event.preventDefault();
 
+  let validBid = true;
+
+  if (!isLoggedIn) {
+    window.open("../html/login.html", "_self");
+    return 0;
+  }
+
   const newBidContainer = document.querySelector("#bid-value");
-  // const currentBid = parseInt(currentBidContainer.innerHTML);
-  const newBid = newBidContainer.value;
+  const newBid = parseInt(newBidContainer.value);
 
-  const bidData = {
-    amount: parseInt(newBid),
+  newBidContainer.oninput = function () {
+    clearFeedback(bidNote, newBidContainer);
   };
 
-  const bidOption = {
-    method: "POST",
-    body: JSON.stringify(bidData),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-      Authorization: `Bearer ${accessToken}`,
-    },
-  };
+  const highestBid = parseInt(currentBid.innerHTML);
 
-  console.log(bidData);
-  const bidResponse = await apiRequest(bidURL, bidOption);
-  console.log(bidResponse);
+  if (newBid > currentUser["credits"]) {
+    validBid = false;
+    setFeedback(bidNote, newBidContainer, "Not enough credit", "text-danger");
+  }
+
+  if (newBid <= highestBid) {
+    validBid = false;
+    setFeedback(
+      bidNote,
+      newBidContainer,
+      `Bid must be higher than ${highestBid}`,
+      "text-danger",
+    );
+  }
+
+  if (validBid) {
+    const bidData = {
+      amount: newBid,
+    };
+
+    const bidOption = {
+      method: "POST",
+      body: JSON.stringify(bidData),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+
+    console.log(bidData);
+    const bidResponse = await apiRequest(bidURL, bidOption);
+    setFeedback(bidNote, bidNote, bidResponse["json"]["status"], "text-danger");
+    console.log(bidResponse);
+  }
 }
 
 getAList();
