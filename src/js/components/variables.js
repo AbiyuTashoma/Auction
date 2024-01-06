@@ -13,8 +13,8 @@ export const logoutBtn = document.querySelector(".logout-btn");
 export const userMenuContainer = document.querySelector(".user-menu");
 export const creditContainer = document.querySelector(".credits");
 export const profileInfoContainer = document.querySelector(".profile-info");
+
 export const feedContainer = document.querySelector(".feed");
-export const aListContainer = document.querySelector(".a-list");
 export const searchFormContainer = document.querySelector(".search-form");
 export const searchContainer = document.querySelector("#search");
 export const resultContainer = document.querySelector(".result");
@@ -31,3 +31,11 @@ export const mediaContainer = document.querySelector("#list-media");
 export const mediaNoteContainer = document.querySelector(".note-media");
 export const enddateContainer = document.querySelector("#list-enddate");
 export const enddateNoteContainer = document.querySelector(".note-enddate");
+
+export const innerCarousel = document.querySelector(".carousel-inner");
+export const title = document.querySelector(".title");
+export const description = document.querySelector(".description");
+export const bidEnddate = document.querySelector(".bid-enddate");
+export const currentBid = document.querySelector(".current-bid");
+export const newBid = document.querySelector(".new-bid");
+export const bidForm = document.querySelector(".bid-form");
