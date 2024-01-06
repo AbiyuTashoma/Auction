@@ -65,7 +65,64 @@
     </header>
     <main class="main-style pb-3 pb-lg-5 pt-3 pt-lg-5">
       <section>
-        <div class="a-list container"></div>
+        <div class="card mx-auto" style="max-width: 900px">
+          <div class="row g-0">
+            <div class="col-md-6">
+              <div
+                id="carouselExampleAutoplaying"
+                class="carousel slide"
+                data-bs-ride="carousel"
+              >
+                <div class="carousel-inner"></div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselExampleAutoplaying"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselExampleAutoplaying"
+                  data-bs-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+            <div class="col-md-6 bg-light">
+              <div class="card-body">
+                <h5 class="card-title title"></h5>
+                <p class="card-text description"></p>
+                <p class="card-text">
+                  Bid ends: <span class="bid-enddate"></span>
+                </p>
+                <p class="card-text">Bid: <span class="current-bid"></span></p>
+                <form class="bid-form">
+                  <div class="mb-3" style="max-width: 300px">
+                    <div class="new-bid"></div>
+                    <div class="note-bid"></div>
+                    <div class="text-center m-3">
+                      <button type="submit" class="custom-btn btn-primary">
+                        Bid
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
     <footer class="footer-style pt-3">
