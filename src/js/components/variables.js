@@ -51,3 +51,9 @@ export const contactMessage = document.querySelector("#contact-message");
 export const noteContactMessage = document.querySelector(
   ".note-contactmessage",
 );
+
+export const loading = `<div class="text-center">
+                <div class="spinner-border mt-3 text-primary" style="width: 4rem; height: 4rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>`;
