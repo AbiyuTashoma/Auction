@@ -16,7 +16,7 @@ export function viewProfile(prfl, prflContainer) {
                                           <div class="note-update"></div>             
                                           <form id="update-form">
                                               <div class="input-group my-2">
-                                                  <input type="url" id="edit-avatar" class="form-control" aria-label="edit avatar url" value='${prfl["avatar"]}'>
+                                                  <input type="url" id="edit-avatar" class="form-control" aria-label="edit avatar url">
                                               </div>
                                               <div class="d-flex justify-content-center gap-2 mt-2">
                                                   <input type="submit" id="update-btn" class="custom-btn btn-primary" value="Update avatar">
