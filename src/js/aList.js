@@ -8,6 +8,7 @@ import {
   newBid,
   bidForm,
   bidNote,
+  loading,
 } from "./components/variables.js";
 import { apiRequest } from "./components/apirequest.js";
 import {
@@ -32,6 +33,7 @@ const aListURL = listingsURL + "/" + productId;
 const bidURL = aListURL + "/bids";
 
 async function getAList() {
+  innerCarousel.innerHTML = loading;
   const listResponse = await apiRequest(aListURL);
   console.log(listResponse["json"]);
   innerCarousel.innerHTML = await createListCarousel(
