@@ -51,7 +51,7 @@ async function submitUpdate(event) {
       setFeedback(
         noteUpdateAvatar,
         noteUpdateAvatar,
-        updateResponse["json"]["errors"][0]["message"],
+        `Contact us and provide error code: ${updateResponse["json"]["statusCode"]}`,
         "text-danger",
       );
     }

@@ -1,7 +1,7 @@
 import {
   listingsURL,
   createlistForm,
-  ListNoteContainer,
+  listNoteContainer,
   titleContainer,
   titleNoteContainer,
   descriptionContainer,
@@ -15,6 +15,7 @@ import { apiRequest } from "./components/apirequest.js";
 import { validateLength, validateUrl } from "./components/validate.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
 import { accessToken } from "./components/profileData.js";
+import { refresh } from "./components/reload.js";
 
 async function createList(event) {
   event.preventDefault();
@@ -90,12 +91,28 @@ async function createList(event) {
 
     const listResponse = await apiRequest(listingsURL, listOption);
     setFeedback(
-      ListNoteContainer,
-      ListNoteContainer,
+      listNoteContainer,
+      listNoteContainer,
       `${listResponse["json"]["status"]}`,
       "text-danger",
     );
     console.log(listResponse);
+    if (listResponse["json"]["id"]) {
+      setFeedback(
+        listNoteContainer,
+        listNoteContainer,
+        "List successfully created",
+        "text-success",
+      );
+      setTimeout(refresh, 2000);
+    } else {
+      setFeedback(
+        listNoteContainer,
+        listNoteContainer,
+        `Contact us and provide error code: ${listResponse["json"]["statusCode"]}`,
+        "text-danger",
+      );
+    }
   }
 }
 
@@ -103,20 +120,20 @@ createlistForm.addEventListener("submit", createList);
 
 titleContainer.oninput = function () {
   clearFeedback(titleNoteContainer, titleContainer);
-  clearFeedback(ListNoteContainer, ListNoteContainer);
+  clearFeedback(listNoteContainer, listNoteContainer);
 };
 
 descriptionContainer.oninput = function () {
   clearFeedback(descriptionNoteContainer, descriptionContainer);
-  clearFeedback(ListNoteContainer, ListNoteContainer);
+  clearFeedback(listNoteContainer, listNoteContainer);
 };
 
 mediaContainer.oninput = function () {
   clearFeedback(mediaNoteContainer, mediaContainer);
-  clearFeedback(ListNoteContainer, ListNoteContainer);
+  clearFeedback(listNoteContainer, listNoteContainer);
 };
 
 enddateContainer.oninput = function () {
   clearFeedback(enddateNoteContainer, enddateContainer);
-  clearFeedback(ListNoteContainer, ListNoteContainer);
+  clearFeedback(listNoteContainer, listNoteContainer);
 };
