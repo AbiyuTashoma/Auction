@@ -1,9 +1,10 @@
 import { currentUser, accessToken } from "./components/profileData.js";
 import { profileInfoContainer, BASE_URL } from "./components/variables.js";
 import { viewProfile } from "./components/renderProfile.js";
-
 import { apiRequest } from "./components/apirequest.js";
 import { validateUrl } from "./components/validate.js";
+import { setFeedback, clearFeedback } from "./components/displayMessage.js";
+import { refresh } from "./components/reload.js";
 
 viewProfile(currentUser, profileInfoContainer);
 
@@ -12,11 +13,16 @@ const updateAvatarContainer = document.querySelector("#update-form");
 async function submitUpdate(event) {
   event.preventDefault();
 
-  const url = document.querySelector("#edit-avatar").value;
+  const newAvatarContainer = document.querySelector("#edit-avatar");
+  const url = newAvatarContainer.value;
   const updateURL = BASE_URL + `/profiles/${currentUser["name"]}/media`;
   const validUrl = validateUrl(url);
+  const noteUpdateAvatar = document.querySelector(".note-update");
 
-  console.log(updateURL);
+  newAvatarContainer.oninput = function () {
+    clearFeedback(noteUpdateAvatar, noteUpdateAvatar);
+  };
+
   const updateData = {
     avatar: `${url}`,
   };
@@ -32,9 +38,30 @@ async function submitUpdate(event) {
 
   if (validUrl) {
     const updateResponse = await apiRequest(updateURL, updateOption);
-    console.log(updateResponse["json"]);
+    if (updateResponse["json"]["name"]) {
+      localStorage.setItem("user", JSON.stringify(updateResponse["json"]));
+      setFeedback(
+        noteUpdateAvatar,
+        noteUpdateAvatar,
+        "Update successful",
+        "text-success",
+      );
+      setTimeout(refresh, 2000);
+    } else {
+      setFeedback(
+        noteUpdateAvatar,
+        noteUpdateAvatar,
+        updateResponse["json"]["errors"][0]["message"],
+        "text-danger",
+      );
+    }
   } else {
-    console.log("ERROR");
+    setFeedback(
+      noteUpdateAvatar,
+      noteUpdateAvatar,
+      "Enter proper url and try again",
+      "text-danger",
+    );
   }
 }
 

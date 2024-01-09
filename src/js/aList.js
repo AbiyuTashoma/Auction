@@ -43,10 +43,12 @@ async function getAList() {
   description.innerHTML = await getElement(listResponse["json"], "description");
   bidEnddate.innerHTML = await getEnddate(listResponse["json"]);
   currentBid.innerHTML = await getCurrentBid(listResponse["json"]);
-  newBid.innerHTML = await getNewBid(
-    listResponse["json"],
-    currentUser["credits"],
-  );
+  if (isLoggedIn) {
+    newBid.innerHTML = await getNewBid(
+      listResponse["json"],
+      currentUser["credits"],
+    );
+  }
 }
 
 async function bid(event) {
