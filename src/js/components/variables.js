@@ -20,7 +20,7 @@ export const searchContainer = document.querySelector("#search");
 export const resultContainer = document.querySelector(".result");
 export const sortByContainer = document.querySelector("#sortBy");
 
-export const ListNoteContainer = document.querySelector(".note-createlist");
+export const listNoteContainer = document.querySelector(".note-createlist");
 export const createlistForm = document.querySelector("#createlist");
 export const titleContainer = document.querySelector("#list-title");
 export const titleNoteContainer = document.querySelector(".note-title");
