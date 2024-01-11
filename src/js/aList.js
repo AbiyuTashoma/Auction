@@ -26,6 +26,7 @@ import {
 } from "./components/profileData.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
 import { refresh } from "./components/reload.js";
+import { validateNumber } from "./components/validate.js";
 
 const queryString = document.location.search;
 const param = new URLSearchParams(queryString);
@@ -68,13 +69,18 @@ async function bid(event) {
   };
 
   const highestBid = parseInt(currentBid.innerHTML);
-  console.log("highest bid: " + highestBid);
-  console.log("new bid: " + newBid);
-  console.log("input value: " + newBidContainer.value);
+  const validInput = validateNumber(newBid);
+
+  if (!validInput) {
+    validBid = false;
+    setFeedback(bidNote, newBidContainer, "Enter proper bid", "text-danger");
+    return;
+  }
 
   if (newBid > currentUser["credits"]) {
     validBid = false;
     setFeedback(bidNote, newBidContainer, "Not enough credit", "text-danger");
+    return;
   }
 
   //add validate number
@@ -86,6 +92,7 @@ async function bid(event) {
       `Bid must be higher than ${highestBid}`,
       "text-danger",
     );
+    return;
   }
 
   if (validBid) {
