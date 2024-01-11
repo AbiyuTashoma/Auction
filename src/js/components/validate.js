@@ -44,3 +44,7 @@ export function validateLength(txt, minLen = 8, maxLen = 500) {
 
   return actualLength >= minLen && actualLength <= maxLen;
 }
+
+export function validateNumber(nbr) {
+  return nbr > 0;
+}

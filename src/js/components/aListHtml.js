@@ -13,17 +13,26 @@ export async function getEnddate(rspns) {
 }
 
 export async function getCurrentBid(rspns) {
-  return rspns["_count"]["bids"];
+  const cntBd = rspns["bids"].length;
+  if (cntBd) {
+    return rspns["bids"][cntBd - 1]["amount"];
+  }
+
+  return 0;
 }
 
-export async function getNewBid(rspns, cdt = 0) {
+export async function getNewBid(rspns) {
+  const cntBd = rspns["bids"].length;
+  let mxBd = 0;
+  if (cntBd) {
+    mxBd = rspns["bids"][cntBd - 1]["amount"];
+  }
   return `<input type="number"
                   class="form-control"
                   id="bid-value"
                   aria-describedby="bidHelp"
-                  min="${rspns["_count"]["bids"]}"
-                  max="${cdt}"
-                  value="${rspns["_count"]["bids"] + 1}"
+                  min="${mxBd + 1}"
+                  value="${mxBd + 1}"
                   />`;
 }
 
