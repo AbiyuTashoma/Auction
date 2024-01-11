@@ -24,78 +24,110 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            User menu
+            <span class="user-menu">Menu</span>
             <span
-              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
-              >+99 <span class="visually-hidden">unread messages</span></span
-            >
+              class="credits position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+              >+0
+            </span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="login.html">Login</a></li>
-            <li><a class="dropdown-item" href="#">Register</a></li>
+            <li>
+              <a class="dropdown-item" href="../../index.html">Home</a>
+            </li>
+            <li>
+              <a class="login-btn logged-out dropdown-item" href="login.html"
+                >Login</a
+              >
+            </li>
+            <li><a class="logged-out dropdown-item" href="#">Register</a></li>
+            <li>
+              <a class="profile-btn logged-in dropdown-item" href="profile.html"
+                >Profile</a
+              >
+            </li>
             <li>
               <a class="dropdown-item" href="contact-us.html">Contact us</a>
             </li>
             <li><a class="dropdown-item" href="about-us.html">About us</a></li>
+            <li>
+              <a
+                class="logout-btn logged-in dropdown-item"
+                href="../../index.html"
+                >Logout</a
+              >
+            </li>
           </ul>
         </div>
       </section>
     </header>
     <main class="main-style pb-3 pb-lg-5 pt-3 pt-lg-5">
       <section>
-        <form class="register-form mx-auto" style="max-width: 415px">
-          <div class="mb-3">
-            <label for="register-name" class="form-label">Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="register-name"
-              aria-describedby="nameHelp"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="register-email" class="form-label">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="register-email"
-              aria-describedby="emailHelp"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="register-avatar" class="form-label">Avatar</label>
-            <input
-              type="url"
-              class="form-control"
-              id="register-avatar"
-              aria-describedby="avatarHelp"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="register-password" class="form-label"
-              >Create Password</label
-            >
-            <input
-              type="password"
-              class="form-control"
-              id="register-password"
-              aria-describedby="passwordHelp"
-            />
-          </div>
-          <div class="text-center">
-            <button type="submit" class="custom-btn btn-primary">
-              Register
-            </button>
-          </div>
-        </form>
+        <div class="container col-11 col-sm-6 col-xl-4">
+          <div class="feedback-success"></div>
+          <form class="register-form">
+            <div class="mb-3">
+              <label for="register-name" class="form-label">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="register-name"
+                aria-describedby="nameHelp"
+                placeholder="enter your name"
+              />
+              <div class="note-name"></div>
+            </div>
+            <div class="mb-3">
+              <label for="register-email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="register-email"
+                aria-describedby="emailHelp"
+                placeholder="enter your email"
+              />
+              <div class="note-email"></div>
+            </div>
+            <div class="mb-3">
+              <label for="register-password" class="form-label"
+                >Create Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="register-password"
+                aria-describedby="passwordHelp"
+                placeholder="enter your password"
+              />
+              <div class="note-password"></div>
+            </div>
+            <div class="mb-3">
+              <label for="register-avatar" class="form-label"
+                >Avatar <i class="fs-6">(Optional)</i></label
+              >
+              <input
+                type="url"
+                class="form-control"
+                id="register-avatar"
+                aria-describedby="avatarHelp"
+                placeholder="enter url"
+              />
+              <div class="note-avatar"></div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="custom-btn btn-primary">
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
       </section>
     </main>
     <footer class="footer-style pt-3">
       <p class="text-center">&#169; Auction 2024</p>
       <div class="d-flex justify-content-center gap-3 m-3">
         <a href="../../index.html" class="footer-link">Home</a>
-        <a href="login.html" class="footer-link">Login</a>
-        <a href="register.html" class="footer-link">Register</a>
+        <a href="login.html" class="footer-link logged-out">Login</a>
+        <a href="register.html" class="footer-link logged-out">Register</a>
         <a href="contact-us.html" class="footer-link">Contact us</a>
         <a href="about-us.html" class="footer-link">About us</a>
       </div>
@@ -131,5 +163,7 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="../js/register.js"></script>
+    <script type="module" src="../js/update.js"></script>
   </body>
 </html>

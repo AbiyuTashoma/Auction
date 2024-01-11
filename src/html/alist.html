@@ -24,16 +24,30 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            User menu
+            <span class="user-menu">Menu</span>
             <span
-              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
-              >+99 <span class="visually-hidden">unread messages</span></span
-            >
+              class="credits position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+              >+0
+            </span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="login.html">Login</a></li>
             <li>
-              <a class="dropdown-item" href="register.html">Register</a>
+              <a class="dropdown-item" href="../../index.html">Home</a>
+            </li>
+            <li>
+              <a class="login-btn logged-out dropdown-item" href="login.html"
+                >Login</a
+              >
+            </li>
+            <li>
+              <a class="logged-out dropdown-item" href="register.html"
+                >Register</a
+              >
+            </li>
+            <li>
+              <a class="profile-btn logged-in dropdown-item" href="profile.html"
+                >Profile</a
+              >
             </li>
             <li>
               <a class="dropdown-item" href="contact-us.html">Contact us</a>
@@ -41,43 +55,28 @@
             <li>
               <a class="dropdown-item" href="about-us.html">About us</a>
             </li>
+            <li>
+              <a
+                class="logout-btn logged-in dropdown-item"
+                href="../../index.html"
+                >Logout</a
+              >
+            </li>
           </ul>
         </div>
       </section>
     </header>
-    <main class="main-style pt-3 pb-3 pb-lg-5 pt-3 pt-lg-5">
+    <main class="main-style pb-3 pb-lg-5 pt-3 pt-lg-5">
       <section>
-        <div class="card">
+        <div class="card mx-auto" style="max-width: 900px">
           <div class="row g-0">
-            <div class="col-md-5">
+            <div class="col-md-6">
               <div
                 id="carouselExampleAutoplaying"
                 class="carousel slide"
                 data-bs-ride="carousel"
               >
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img
-                      src="../temp/car/joshua-koblin-eqW1MPinEV4-unsplash.jpg"
-                      class="card-img-top d-block w-100"
-                      alt="..."
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="../temp/car/martin-katler-WBsl72esyVo-unsplash.jpg"
-                      class="card-img-top d-block w-100"
-                      alt="..."
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="../temp/car/brandon-atchison-_DzW3MT-iIY-unsplash.jpg"
-                      class="card-img-top d-block w-100"
-                      alt="..."
-                    />
-                  </div>
-                </div>
+                <div class="carousel-inner"></div>
                 <button
                   class="carousel-control-prev"
                   type="button"
@@ -104,17 +103,27 @@
                 </button>
               </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-6 bg-light">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card</p>
-                <p class="card-text">This is a wider card</p>
-                <a href="#" class="custom-btn btn-primary">Go somewhere</a>
+                <h5 class="card-title title"></h5>
+                <p class="card-text description"></p>
+                <p class="card-text">
+                  Bid ends: <span class="bid-enddate"></span>
+                </p>
+                <p class="card-text">Bid: <span class="current-bid"></span></p>
+                <form class="bid-form">
+                  <div class="mb-3" style="max-width: 300px">
+                    <div class="new-bid"></div>
+                    <div class="note-bid"></div>
+                    <div class="text-center m-3">
+                      <button type="submit" class="custom-btn btn-primary">
+                        Bid
+                      </button>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
-          </div>
-          <div class="card-footer">
-            <small class="text-body-secondary">Last updated 3 mins ago</small>
           </div>
         </div>
       </section>
@@ -123,8 +132,8 @@
       <p class="text-center">&#169; Auction 2024</p>
       <div class="d-flex justify-content-center gap-3 m-3">
         <a href="../../index.html" class="footer-link">Home</a>
-        <a href="login.html" class="footer-link">Login</a>
-        <a href="register.html" class="footer-link">Register</a>
+        <a href="login.html" class="footer-link logged-out">Login</a>
+        <a href="register.html" class="footer-link logged-out">Register</a>
         <a href="contact-us.html" class="footer-link">Contact us</a>
         <a href="about-us.html" class="footer-link">About us</a>
       </div>
@@ -160,5 +169,7 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="../js/update.js"></script>
+    <script type="module" src="../js/aList.js"></script>
   </body>
 </html>

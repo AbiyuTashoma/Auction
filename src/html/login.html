@@ -24,51 +24,77 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            User menu
+            <span class="user-menu">Menu</span>
             <span
-              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
-              >+99 <span class="visually-hidden">unread messages</span></span
-            >
+              class="credits position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+              >+0
+            </span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Login</a></li>
-            <li><a class="dropdown-item" href="register.html">Register</a></li>
+            <li>
+              <a class="dropdown-item" href="../../index.html">Home</a>
+            </li>
+            <li>
+              <a class="login-btn logged-out dropdown-item" href="#">Login</a>
+            </li>
+            <li>
+              <a class="logged-out dropdown-item" href="register.html"
+                >Register</a
+              >
+            </li>
+            <li>
+              <a class="profile-btn logged-in dropdown-item" href="profile.html"
+                >Profile</a
+              >
+            </li>
             <li>
               <a class="dropdown-item" href="contact-us.html">Contact us</a>
             </li>
             <li><a class="dropdown-item" href="about-us.html">About us</a></li>
+            <li>
+              <a
+                class="logout-btn logged-in dropdown-item"
+                href="../../index.html"
+                >Logout</a
+              >
+            </li>
           </ul>
         </div>
       </section>
     </header>
     <main class="main-style pb-3 pb-lg-5 pt-3 pt-lg-5">
       <section>
-        <form class="login-form mx-auto" style="max-width: 415px">
-          <div class="mb-3">
-            <label for="login-email" class="form-label">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="login-email"
-              aria-describedby="emailHelp"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="login-password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="login-password" />
-          </div>
-          <div class="text-center">
-            <button type="submit" class="custom-btn btn-primary">Login</button>
-          </div>
-        </form>
+        <div class="container col-11 col-sm-6 col-xl-4">
+          <div class="feedback-error"></div>
+          <form class="login-form">
+            <div class="mb-3">
+              <label for="login-email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="login-email"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="login-password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="login-password" />
+            </div>
+            <div class="text-center">
+              <button type="submit" class="custom-btn btn-primary">
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
       </section>
     </main>
     <footer class="footer-style pt-3">
       <p class="text-center">&#169; Auction 2024</p>
       <div class="d-flex justify-content-center gap-3 m-3">
         <a href="../../index.html" class="footer-link">Home</a>
-        <a href="login.html" class="footer-link">Login</a>
-        <a href="register.html" class="footer-link">Register</a>
+        <a href="login.html" class="footer-link logged-out">Login</a>
+        <a href="register.html" class="footer-link logged-out">Register</a>
         <a href="contact-us.html" class="footer-link">Contact us</a>
         <a href="about-us.html" class="footer-link">About us</a>
       </div>
@@ -104,5 +130,7 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="../js/login.js"></script>
+    <script type="module" src="../js/update.js"></script>
   </body>
 </html>
