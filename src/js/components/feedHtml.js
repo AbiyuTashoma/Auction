@@ -53,5 +53,12 @@ export function createCarousel(mda, eid) {
     j++;
   });
 
+  if (!j) {
+    carousel = `<div class="carousel-item active">
+                        <a href="src/html/alist.html?id=${eid}">
+                            <img src="https://i.ibb.co/P6z4mw0/no-image-available.jpg" class="card-img-top d-block w-100" alt="no image"/>
+                        </a>
+                    </div>`;
+  }
   return carousel;
 }
