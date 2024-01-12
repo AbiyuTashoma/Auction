@@ -50,6 +50,12 @@ export async function createListCarousel(mda) {
     j++;
   });
 
+  if (!j) {
+    carousel = `<div class="carousel-item active">
+                <img src="https://i.ibb.co/P6z4mw0/no-image-available.jpg" class="card-img-top d-block w-100" alt="no image"/>
+              </div>`;
+  }
+
   return carousel;
 }
 
