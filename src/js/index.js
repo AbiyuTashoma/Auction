@@ -24,8 +24,8 @@ async function search(event) {
 
   if (searchValue.length) {
     feedContainer.innerHTML = loading;
-    const fResponse = await apiRequest(feedURL);
-    const searchResult = searchText(fResponse["json"], searchValue);
+    const fResponse = await apiRequest(feedURL + `&sort=created`);
+    const searchResult = await searchText(fResponse["json"], searchValue);
     resultContainer.innerHTML = `<p>${searchResult.length} results found</p>`;
     feedContainer.innerHTML = await createFeedHtml(searchResult);
   }
