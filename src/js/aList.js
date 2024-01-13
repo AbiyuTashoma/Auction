@@ -10,6 +10,7 @@ import {
   bidNote,
   loading,
   BASE_URL,
+  aListNote,
 } from "./components/variables.js";
 import { apiRequest } from "./components/apirequest.js";
 import {
@@ -39,17 +40,26 @@ const bidURL = aListURL + "/bids";
 async function getAList() {
   innerCarousel.innerHTML = loading;
   const listResponse = await apiRequest(aListURLwithBids);
-  console.log(listResponse["json"]);
-  getMaxBid(listResponse["json"]["bids"]);
-
-  innerCarousel.innerHTML = await createListCarousel(
-    listResponse["json"]["media"],
-  );
-  title.innerHTML = await getElement(listResponse["json"], "title");
-  description.innerHTML = await getElement(listResponse["json"], "description");
-  bidEnddate.innerHTML = await getEnddate(listResponse["json"]);
-  currentBid.innerHTML = await getMaxBid(listResponse["json"]["bids"]);
-  newBid.innerHTML = await getNewBid(listResponse["json"]);
+  if (!listResponse["json"]["errors"]) {
+    innerCarousel.innerHTML = await createListCarousel(
+      listResponse["json"]["media"],
+    );
+    title.innerHTML = await getElement(listResponse["json"], "title");
+    description.innerHTML = await getElement(
+      listResponse["json"],
+      "description",
+    );
+    bidEnddate.innerHTML = await getEnddate(listResponse["json"]);
+    currentBid.innerHTML = await getMaxBid(listResponse["json"]["bids"]);
+    newBid.innerHTML = await getNewBid(listResponse["json"]);
+  } else {
+    setFeedback(
+      aListNote,
+      aListNote,
+      "Unknown error, try again",
+      "text-danger text-center",
+    );
+  }
 }
 
 async function bid(event) {
@@ -111,7 +121,6 @@ async function bid(event) {
     };
 
     const bidResponse = await apiRequest(bidURL, bidOption);
-    console.log(bidResponse);
     if (bidResponse["json"]["id"]) {
       setFeedback(bidNote, bidNote, "Bid successfully placed", "text-success");
       getProfile(profileURL);
@@ -146,6 +155,7 @@ async function getProfile(pflURL) {
   const profileResponse = await apiRequest(pflURL, getOption);
   localStorage.setItem("user", JSON.stringify(profileResponse["json"]));
 }
+
 getAList();
 
 bidForm.addEventListener("submit", bid);

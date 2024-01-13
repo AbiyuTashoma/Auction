@@ -10,12 +10,21 @@ import {
 import { apiRequest } from "./components/apirequest.js";
 import { createFeedHtml } from "./components/feedHtml.js";
 import { searchText } from "./components/search.js";
+import { setFeedback } from "./components/displayMessage.js";
 
 async function loadFeed(srt = "created") {
   feedContainer.innerHTML = loading;
   const feedResponse = await apiRequest(feedURL + `&sort=${srt}`);
-  console.log(feedResponse["json"]);
-  feedContainer.innerHTML = await createFeedHtml(feedResponse["json"]);
+  if (!feedResponse["json"]["errors"]) {
+    feedContainer.innerHTML = await createFeedHtml(feedResponse["json"]);
+  } else {
+    setFeedback(
+      feedContainer,
+      feedContainer,
+      "Unknown error, try again",
+      "text-danger text-center",
+    );
+  }
 }
 
 async function search(event) {

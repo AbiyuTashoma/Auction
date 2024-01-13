@@ -40,6 +40,7 @@ export const currentBid = document.querySelector(".current-bid");
 export const newBid = document.querySelector(".new-bid");
 export const bidForm = document.querySelector(".bid-form");
 export const bidNote = document.querySelector(".note-bid");
+export const aListNote = document.querySelector(".a-list-note");
 
 export const contactForm = document.querySelector(".contact-form");
 export const contactSuccess = document.querySelector(".contact-success");
