@@ -14,11 +14,16 @@ import {
 import { apiRequest } from "./components/apirequest.js";
 import { validateLength, validateUrl } from "./components/validate.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
-import { accessToken } from "./components/profileData.js";
+import { accessToken, isLoggedIn } from "./components/profileData.js";
 import { refresh } from "./components/reload.js";
 
 async function createList(event) {
   event.preventDefault();
+
+  if (!isLoggedIn) {
+    window.open("src/html/login.html", "_self");
+    return 0;
+  }
 
   let validList = true;
 

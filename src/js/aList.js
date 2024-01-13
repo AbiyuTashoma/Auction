@@ -65,12 +65,12 @@ async function getAList() {
 async function bid(event) {
   event.preventDefault();
 
-  let validBid = true;
-
   if (!isLoggedIn) {
     window.open("../html/login.html", "_self");
     return 0;
   }
+
+  let validBid = true;
 
   const profileURL = BASE_URL + `/profiles/${currentUser["name"]}`;
   const newBidContainer = document.querySelector("#bid-value");
