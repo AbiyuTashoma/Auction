@@ -44,6 +44,14 @@ async function profileLists() {
     profileFeedContainer.innerHTML = await createFeedHtml(
       profileFeedResponse["json"]["listings"],
     );
+  } else {
+    setFeedback(
+      profileFeedContainer,
+      profileFeedContainer,
+      "Unknown error, try again",
+      "text-danger",
+    );
+    return;
   }
 }
 
