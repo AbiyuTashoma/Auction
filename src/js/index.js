@@ -15,15 +15,16 @@ import { setFeedback } from "./components/displayMessage.js";
 async function loadFeed(srt = "created") {
   feedContainer.innerHTML = loading;
   const feedResponse = await apiRequest(feedURL + `&sort=${srt}`);
-  if (!feedResponse["json"]["errors"]) {
-    feedContainer.innerHTML = await createFeedHtml(feedResponse["json"]);
-  } else {
+
+  if (feedResponse["error"] || feedResponse["json"]["errors"]) {
     setFeedback(
       feedContainer,
       feedContainer,
       "Unknown error, try again",
       "text-danger text-center",
     );
+  } else {
+    feedContainer.innerHTML = await createFeedHtml(feedResponse["json"]);
   }
 }
 
@@ -31,9 +32,20 @@ async function search(event) {
   event.preventDefault();
   const searchValue = searchContainer.value.toLowerCase();
 
-  if (searchValue.length) {
-    feedContainer.innerHTML = loading;
-    const fResponse = await apiRequest(feedURL + `&sort=created`);
+  if (!searchValue.length) {
+    return;
+  }
+
+  feedContainer.innerHTML = loading;
+  const fResponse = await apiRequest(feedURL + `&sort=created`);
+  if (fResponse["error"] || fResponse["json"]["errors"]) {
+    setFeedback(
+      feedContainer,
+      feedContainer,
+      "Unknown error, try again",
+      "text-danger text-center",
+    );
+  } else {
     const searchResult = await searchText(fResponse["json"], searchValue);
     resultContainer.innerHTML = `<p>${searchResult.length} results found</p>`;
     feedContainer.innerHTML = await createFeedHtml(searchResult);
