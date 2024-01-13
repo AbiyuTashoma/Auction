@@ -24,7 +24,10 @@ async function loadFeed(srt = "created") {
       "text-danger text-center",
     );
   } else {
-    feedContainer.innerHTML = await createFeedHtml(feedResponse["json"]);
+    feedContainer.innerHTML = await createFeedHtml(
+      feedResponse["json"],
+      "src/html/",
+    );
   }
 }
 
