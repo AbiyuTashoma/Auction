@@ -12,21 +12,8 @@ export async function getEnddate(rspns) {
   return `${endDate} at ${endHour}`;
 }
 
-export async function getCurrentBid(rspns) {
-  const cntBd = rspns["bids"].length;
-  if (cntBd) {
-    return rspns["bids"][cntBd - 1]["amount"];
-  }
-
-  return 0;
-}
-
 export async function getNewBid(rspns) {
-  const cntBd = rspns["bids"].length;
-  let mxBd = 0;
-  if (cntBd) {
-    mxBd = rspns["bids"][cntBd - 1]["amount"];
-  }
+  const mxBd = await getMaxBid(rspns["bids"]);
   return `<input type="number"
                   class="form-control"
                   id="bid-value"
@@ -63,4 +50,18 @@ export function truncate(source, from = 0, to = source.length) {
   const trunc = source.slice(from, to);
 
   return trunc;
+}
+
+export async function getMaxBid(bids) {
+  const bidLength = bids.length;
+  let maxBid = 0;
+  if (bidLength) {
+    bids.forEach((bd) => {
+      if (bd["amount"] >= maxBid) {
+        maxBid = bd["amount"];
+      }
+    });
+  }
+
+  return maxBid;
 }

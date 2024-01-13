@@ -16,8 +16,8 @@ import {
   createListCarousel,
   getElement,
   getEnddate,
-  getCurrentBid,
   getNewBid,
+  getMaxBid,
 } from "./components/aListHtml.js";
 import {
   currentUser,
@@ -40,13 +40,15 @@ async function getAList() {
   innerCarousel.innerHTML = loading;
   const listResponse = await apiRequest(aListURLwithBids);
   console.log(listResponse["json"]);
+  getMaxBid(listResponse["json"]["bids"]);
+
   innerCarousel.innerHTML = await createListCarousel(
     listResponse["json"]["media"],
   );
   title.innerHTML = await getElement(listResponse["json"], "title");
   description.innerHTML = await getElement(listResponse["json"], "description");
   bidEnddate.innerHTML = await getEnddate(listResponse["json"]);
-  currentBid.innerHTML = await getCurrentBid(listResponse["json"]);
+  currentBid.innerHTML = await getMaxBid(listResponse["json"]["bids"]);
   newBid.innerHTML = await getNewBid(listResponse["json"]);
 }
 
@@ -83,7 +85,6 @@ async function bid(event) {
     return;
   }
 
-  //add validate number
   if (newBid <= highestBid) {
     validBid = false;
     setFeedback(
