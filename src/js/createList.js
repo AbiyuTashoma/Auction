@@ -96,7 +96,7 @@ async function createList(event) {
       `${listResponse["json"]["status"]}`,
       "text-danger",
     );
-    console.log(listResponse);
+
     if (listResponse["json"]["id"]) {
       setFeedback(
         listNoteContainer,
