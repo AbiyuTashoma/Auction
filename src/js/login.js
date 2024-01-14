@@ -46,13 +46,13 @@ async function loginUser(event) {
   console.log(loginResponse["json"]);
 
   if (loginResponse["json"]["name"]) {
-    console.log("Login successful");
     localStorage.setItem(
       "accessToken",
       JSON.stringify(loginResponse["json"]["accessToken"]),
     );
     delete loginResponse["json"]["accessToken"];
     localStorage.setItem("user", JSON.stringify(loginResponse["json"]));
+    loginFormContainer.reset();
     window.open("../../index.html", "_self");
   } else {
     console.log("Invalid email or password");
