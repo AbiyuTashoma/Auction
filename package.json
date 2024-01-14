@@ -1,6 +1,6 @@
 {
   "name": "auction",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Auction website semister project",
   "main": "index.js",
   "scripts": {
