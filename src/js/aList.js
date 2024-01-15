@@ -10,14 +10,15 @@ import {
   bidNote,
   loading,
   BASE_URL,
+  aListNote,
 } from "./components/variables.js";
 import { apiRequest } from "./components/apirequest.js";
 import {
   createListCarousel,
   getElement,
   getEnddate,
-  getCurrentBid,
   getNewBid,
+  getMaxBid,
 } from "./components/aListHtml.js";
 import {
   currentUser,
@@ -39,26 +40,37 @@ const bidURL = aListURL + "/bids";
 async function getAList() {
   innerCarousel.innerHTML = loading;
   const listResponse = await apiRequest(aListURLwithBids);
-  console.log(listResponse["json"]);
-  innerCarousel.innerHTML = await createListCarousel(
-    listResponse["json"]["media"],
-  );
-  title.innerHTML = await getElement(listResponse["json"], "title");
-  description.innerHTML = await getElement(listResponse["json"], "description");
-  bidEnddate.innerHTML = await getEnddate(listResponse["json"]);
-  currentBid.innerHTML = await getCurrentBid(listResponse["json"]);
-  newBid.innerHTML = await getNewBid(listResponse["json"]);
+  if (listResponse["error"] || listResponse["json"]["errors"]) {
+    setFeedback(
+      aListNote,
+      aListNote,
+      "Unknown error, try again",
+      "text-danger text-center",
+    );
+  } else {
+    innerCarousel.innerHTML = await createListCarousel(
+      listResponse["json"]["media"],
+    );
+    title.innerHTML = await getElement(listResponse["json"], "title");
+    description.innerHTML = await getElement(
+      listResponse["json"],
+      "description",
+    );
+    bidEnddate.innerHTML = await getEnddate(listResponse["json"]);
+    currentBid.innerHTML = await getMaxBid(listResponse["json"]["bids"]);
+    newBid.innerHTML = await getNewBid(listResponse["json"]);
+  }
 }
 
 async function bid(event) {
   event.preventDefault();
 
-  let validBid = true;
-
   if (!isLoggedIn) {
     window.open("../html/login.html", "_self");
     return 0;
   }
+
+  let validBid = true;
 
   const profileURL = BASE_URL + `/profiles/${currentUser["name"]}`;
   const newBidContainer = document.querySelector("#bid-value");
@@ -83,7 +95,6 @@ async function bid(event) {
     return;
   }
 
-  //add validate number
   if (newBid <= highestBid) {
     validBid = false;
     setFeedback(
@@ -110,7 +121,6 @@ async function bid(event) {
     };
 
     const bidResponse = await apiRequest(bidURL, bidOption);
-    console.log(bidResponse);
     if (bidResponse["json"]["id"]) {
       setFeedback(bidNote, bidNote, "Bid successfully placed", "text-success");
       getProfile(profileURL);
@@ -145,6 +155,7 @@ async function getProfile(pflURL) {
   const profileResponse = await apiRequest(pflURL, getOption);
   localStorage.setItem("user", JSON.stringify(profileResponse["json"]));
 }
+
 getAList();
 
 bidForm.addEventListener("submit", bid);

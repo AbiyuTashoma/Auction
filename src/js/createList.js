@@ -14,22 +14,28 @@ import {
 import { apiRequest } from "./components/apirequest.js";
 import { validateLength, validateUrl } from "./components/validate.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
-import { accessToken } from "./components/profileData.js";
+import { accessToken, isLoggedIn } from "./components/profileData.js";
 import { refresh } from "./components/reload.js";
+import { toArray } from "./components/stringToArray.js";
 
 async function createList(event) {
   event.preventDefault();
+
+  if (!isLoggedIn) {
+    window.open("src/html/login.html", "_self");
+    return 0;
+  }
 
   let validList = true;
 
   const title = titleContainer.value;
   const description = descriptionContainer.value;
   const media = mediaContainer.value;
+  const mediaArray = toArray(media, ",");
   const enddate = enddateContainer.value;
 
   const validTitle = validateLength(title, 1, 50);
   const validDescription = validateLength(description, 5);
-  const validMedia = validateUrl(media);
   const validDate = validateLength(enddate, 16, 16);
 
   if (!validTitle) {
@@ -52,15 +58,18 @@ async function createList(event) {
     );
   }
 
-  if (!validMedia) {
-    validList = false;
-    setFeedback(
-      mediaNoteContainer,
-      mediaContainer,
-      "Add proper url.",
-      "text-danger",
-    );
-  }
+  mediaArray.forEach((element) => {
+    if (!validateUrl(element)) {
+      validList = false;
+      setFeedback(
+        mediaNoteContainer,
+        mediaContainer,
+        "Add proper url. Urls are separated by comma",
+        "text-danger",
+      );
+      return;
+    }
+  });
 
   if (!validDate) {
     validList = false;
@@ -76,7 +85,7 @@ async function createList(event) {
     const listData = {
       title: `${title}`,
       description: `${description}`,
-      media: [`${media}`],
+      media: mediaArray,
       endsAt: `${enddate}`,
     };
 
@@ -90,13 +99,7 @@ async function createList(event) {
     };
 
     const listResponse = await apiRequest(listingsURL, listOption);
-    setFeedback(
-      listNoteContainer,
-      listNoteContainer,
-      `${listResponse["json"]["status"]}`,
-      "text-danger",
-    );
-    console.log(listResponse);
+
     if (listResponse["json"]["id"]) {
       setFeedback(
         listNoteContainer,
@@ -104,6 +107,7 @@ async function createList(event) {
         "List successfully created",
         "text-success",
       );
+      createlistForm.reset();
       setTimeout(refresh, 2000);
     } else {
       setFeedback(

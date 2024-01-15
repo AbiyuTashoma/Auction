@@ -1,4 +1,4 @@
-export function searchText(sJsn, sTxt) {
+export async function searchText(sJsn, sTxt) {
   const sResult = sJsn.filter(
     ({ title, description }) =>
       title.toLowerCase().includes(sTxt) ||

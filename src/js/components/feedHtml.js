@@ -1,8 +1,8 @@
-export async function createFeedHtml(rspns) {
+export async function createFeedHtml(rspns, path = "") {
   let html = "";
   let i = 0;
   rspns.forEach((element) => {
-    const innerCarousel = createCarousel(element["media"], element["id"]);
+    const innerCarousel = createCarousel(element["media"], element["id"], path);
 
     html += `<div class="col">
             <div class="card h-100">
@@ -25,7 +25,7 @@ export async function createFeedHtml(rspns) {
                         ${element["description"]}
                     </p>
                     <div class="text-center">
-                        <a href="src/html/alist.html?id=${element["id"]}" class="custom-btn btn-primary">View List</a>
+                        <a href="${path}alist.html?id=${element["id"]}" class="custom-btn btn-primary">View List</a>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@ export async function createFeedHtml(rspns) {
   return html;
 }
 
-export function createCarousel(mda, eid) {
+export function createCarousel(mda, eid, relativePath) {
   let carousel = "";
   let j = 0;
   let active = "active";
@@ -46,12 +46,19 @@ export function createCarousel(mda, eid) {
       active = "";
     }
     carousel += `<div class="carousel-item ${active}">
-                        <a href="src/html/alist.html?id=${eid}">
+                        <a href="${relativePath}alist.html?id=${eid}">
                             <img src="${element}" class="card-img-top d-block w-100" alt="..."/>
                         </a>
                     </div>`;
     j++;
   });
 
+  if (!j) {
+    carousel = `<div class="carousel-item active">
+                        <a href="${relativePath}alist.html?id=${eid}">
+                            <img src="https://i.ibb.co/P6z4mw0/no-image-available.jpg" class="card-img-top d-block w-100" alt="no image"/>
+                        </a>
+                    </div>`;
+  }
   return carousel;
 }

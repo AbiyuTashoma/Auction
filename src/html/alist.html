@@ -26,8 +26,8 @@
           >
             <span class="user-menu">Menu</span>
             <span
-              class="credits position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
-              >+0
+              class="credits logged-in position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+            >
             </span>
           </button>
           <ul class="dropdown-menu">
@@ -68,6 +68,8 @@
     </header>
     <main class="main-style pb-3 pb-lg-5 pt-3 pt-lg-5">
       <section>
+        <div class="a-list-note" style="max-width: 900px"></div>
+
         <div class="card mx-auto" style="max-width: 900px">
           <div class="row g-0">
             <div class="col-md-6">
@@ -110,7 +112,9 @@
                 <p class="card-text">
                   Bid ends: <span class="bid-enddate"></span>
                 </p>
-                <p class="card-text">Bid: <span class="current-bid"></span></p>
+                <p class="card-text">
+                  Highest Bid: <span class="current-bid"></span>
+                </p>
                 <form class="bid-form">
                   <div class="mb-3" style="max-width: 300px">
                     <div class="new-bid"></div>

@@ -12,7 +12,9 @@ export const loggedInContainer = document.querySelectorAll(".logged-in");
 export const logoutBtn = document.querySelector(".logout-btn");
 export const userMenuContainer = document.querySelector(".user-menu");
 export const creditContainer = document.querySelector(".credits");
+
 export const profileInfoContainer = document.querySelector(".profile-info");
+export const profileFeedContainer = document.querySelector(".profile-feed");
 
 export const feedContainer = document.querySelector(".feed");
 export const searchFormContainer = document.querySelector(".search-form");
@@ -40,6 +42,7 @@ export const currentBid = document.querySelector(".current-bid");
 export const newBid = document.querySelector(".new-bid");
 export const bidForm = document.querySelector(".bid-form");
 export const bidNote = document.querySelector(".note-bid");
+export const aListNote = document.querySelector(".a-list-note");
 
 export const contactForm = document.querySelector(".contact-form");
 export const contactSuccess = document.querySelector(".contact-success");
