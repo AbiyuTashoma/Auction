@@ -1,4 +1,4 @@
-import { apiRequest } from "./components/apirequest.js";
+import { apiRequest } from "./components/apiRequest.js";
 import { registerURL } from "./components/variables.js";
 import {
   validateName,
@@ -121,7 +121,6 @@ async function validate(event) {
     };
 
     const registerResponse = await apiRequest(registerURL, registerOption);
-    console.log(registerResponse);
 
     if (registerResponse["output"] == "json") {
       if (registerResponse["json"]["id"]) {
@@ -132,8 +131,8 @@ async function validate(event) {
           "text-success",
         );
         registerFormContainer.reset();
+        return;
       } else if (registerResponse["json"]["errors"][0]) {
-        console.log(registerResponse["json"]["errors"][0]["message"]);
         setFeedback(
           successContainer,
           successContainer,
@@ -141,9 +140,7 @@ async function validate(event) {
           "text-danger",
         );
       }
-    }
-
-    if (registerResponse["output"] == "error") {
+    } else {
       setFeedback(
         successContainer,
         successContainer,

@@ -11,7 +11,7 @@ import {
   enddateContainer,
   enddateNoteContainer,
 } from "./components/variables.js";
-import { apiRequest } from "./components/apirequest.js";
+import { apiRequest } from "./components/apiRequest.js";
 import { validateLength, validateUrl } from "./components/validate.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
 import { accessToken, isLoggedIn } from "./components/profileData.js";

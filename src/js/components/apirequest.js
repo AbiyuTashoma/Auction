@@ -4,14 +4,12 @@
  * @param {Request} requestOption
  */
 export async function apiRequest(apiURL, requestOption) {
-  try {
-    const response = await fetch(apiURL, requestOption);
-    const json = await response.json();
+  const response = await fetch(apiURL, requestOption);
 
-    // console.log(json);
+  try {
+    const json = await response.json();
     return { output: "json", json: json };
   } catch (error) {
-    // console.log(error);
-    return { output: "error", error: error };
+    throw new Error(response.statusText);
   }
 }

@@ -7,7 +7,7 @@ import {
   sortByContainer,
   loading,
 } from "./components/variables.js";
-import { apiRequest } from "./components/apirequest.js";
+import { apiRequest } from "./components/apiRequest.js";
 import { createFeedHtml } from "./components/feedHtml.js";
 import { searchText } from "./components/search.js";
 import { setFeedback } from "./components/displayMessage.js";
@@ -15,18 +15,17 @@ import { setFeedback } from "./components/displayMessage.js";
 async function loadFeed(srt = "created") {
   feedContainer.innerHTML = loading;
   const feedResponse = await apiRequest(feedURL + `&sort=${srt}`);
-
-  if (feedResponse["error"] || feedResponse["json"]["errors"]) {
+  if (feedResponse["json"][0]["id"]) {
+    feedContainer.innerHTML = await createFeedHtml(
+      feedResponse["json"],
+      "src/html/",
+    );
+  } else {
     setFeedback(
       feedContainer,
       feedContainer,
       "Unknown error, try again",
       "text-danger text-center",
-    );
-  } else {
-    feedContainer.innerHTML = await createFeedHtml(
-      feedResponse["json"],
-      "src/html/",
     );
   }
 }
@@ -41,17 +40,17 @@ async function search(event) {
 
   feedContainer.innerHTML = loading;
   const fResponse = await apiRequest(feedURL + `&sort=created`);
-  if (fResponse["error"] || fResponse["json"]["errors"]) {
+  if (fResponse["json"][0]["id"]) {
+    const searchResult = await searchText(fResponse["json"], searchValue);
+    resultContainer.innerHTML = `<p>${searchResult.length} results found</p>`;
+    feedContainer.innerHTML = await createFeedHtml(searchResult);
+  } else {
     setFeedback(
       feedContainer,
       feedContainer,
       "Unknown error, try again",
       "text-danger text-center",
     );
-  } else {
-    const searchResult = await searchText(fResponse["json"], searchValue);
-    resultContainer.innerHTML = `<p>${searchResult.length} results found</p>`;
-    feedContainer.innerHTML = await createFeedHtml(searchResult);
   }
 }
 
