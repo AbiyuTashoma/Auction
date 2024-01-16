@@ -12,7 +12,7 @@ import {
   BASE_URL,
   aListNote,
 } from "./components/variables.js";
-import { apiRequest } from "./components/apirequest.js";
+import { apiRequest } from "./components/apiRequest.js";
 import {
   createListCarousel,
   getElement,
@@ -40,14 +40,7 @@ const bidURL = aListURL + "/bids";
 async function getAList() {
   innerCarousel.innerHTML = loading;
   const listResponse = await apiRequest(aListURLwithBids);
-  if (listResponse["error"] || listResponse["json"]["errors"]) {
-    setFeedback(
-      aListNote,
-      aListNote,
-      "Unknown error, try again",
-      "text-danger text-center",
-    );
-  } else {
+  if (listResponse["json"]["id"]) {
     innerCarousel.innerHTML = await createListCarousel(
       listResponse["json"]["media"],
     );
@@ -59,6 +52,13 @@ async function getAList() {
     bidEnddate.innerHTML = await getEnddate(listResponse["json"]);
     currentBid.innerHTML = await getMaxBid(listResponse["json"]["bids"]);
     newBid.innerHTML = await getNewBid(listResponse["json"]);
+  } else {
+    setFeedback(
+      aListNote,
+      aListNote,
+      "Unknown error, try again",
+      "text-danger text-center",
+    );
   }
 }
 

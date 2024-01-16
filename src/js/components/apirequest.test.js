@@ -1,4 +1,4 @@
-import { apiRequest } from "./apirequest";
+import { apiRequest } from "./apiRequest";
 
 const apiUrl = "api-url";
 const apiMethod = "api-method";
@@ -19,11 +19,5 @@ describe("verify api fetch function", () => {
   it("fetches api response and returns json", async () => {
     const apiResponse = await apiRequest(apiUrl, apiMethod);
     expect(apiResponse["json"]["name"]).toBe("student_1");
-  });
-});
-
-describe("add two numbers", () => {
-  it("check sum of two numbers", () => {
-    expect(2 + 2).toBe(4);
   });
 });

@@ -6,7 +6,7 @@ import {
   loading,
 } from "./components/variables.js";
 import { viewProfile } from "./components/renderProfile.js";
-import { apiRequest } from "./components/apirequest.js";
+import { apiRequest } from "./components/apiRequest.js";
 import { validateUrl } from "./components/validate.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
 import { refresh } from "./components/reload.js";
@@ -29,7 +29,6 @@ async function profileLists() {
 
   profileFeedContainer.innerHTML = loading;
   const profileFeedResponse = await apiRequest(profileListingURL, pfListOption);
-  console.log(profileFeedResponse["json"]);
   if (!profileFeedResponse["json"]["listings"].length) {
     setFeedback(
       profileFeedContainer,
