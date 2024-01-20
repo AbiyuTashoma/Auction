@@ -49,7 +49,7 @@ async function getAList() {
       listResponse["json"],
       "description",
     );
-    bidEnddate.innerHTML = await getEnddate(listResponse["json"]);
+    bidEnddate.innerHTML = await getEnddate(listResponse["json"]["endsAt"]);
     currentBid.innerHTML = await getMaxBid(listResponse["json"]["bids"]);
     newBid.innerHTML = await getNewBid(listResponse["json"]);
   } else {
