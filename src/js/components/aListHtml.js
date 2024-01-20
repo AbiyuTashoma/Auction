@@ -2,13 +2,9 @@ export async function getElement(rspns, elmnt) {
   return rspns[elmnt];
 }
 
-export async function getEnddate(rspns) {
-  const endDate = truncate(rspns["endsAt"], 0, rspns["endsAt"].indexOf("T"));
-  const endHour = truncate(
-    rspns["endsAt"],
-    rspns["endsAt"].indexOf("T") + 1,
-    rspns["endsAt"].indexOf("."),
-  );
+export async function getEnddate(edAt) {
+  const endDate = truncate(edAt, 0, edAt.indexOf("T"));
+  const endHour = truncate(edAt, edAt.indexOf("T") + 1, edAt.indexOf("."));
   return `${endDate} at ${endHour}`;
 }
 
