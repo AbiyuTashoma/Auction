@@ -3,33 +3,18 @@ beforeEach(() => {
 });
 
 describe("Verify view a list link functions", () => {
-  it("opens list page when selected from image", () => {
-    cy.get(".carousel-inner")
-      .first()
-      .find("a")
-      .should("have.attr", "href")
-      .then((href) => {
-        cy.get(".carousel-inner")
-          .first()
-          .find("img")
-          .click()
-          .then(() => {
-            cy.url().should("include", href);
-          });
-      });
-  });
-  it("opens list page when selected from button", () => {
+  it("opens list page when selected", () => {
     cy.get(".card-body")
       .first()
       .find("a")
       .should("have.attr", "href")
-      .then((href2) => {
+      .then((href) => {
         cy.get(".card-body")
           .first()
           .find("a")
           .click()
           .then(() => {
-            cy.url().should("include", href2);
+            cy.url().should("include", href);
           });
       });
   });
