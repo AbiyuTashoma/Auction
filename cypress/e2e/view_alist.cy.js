@@ -11,7 +11,7 @@ describe("Verify view a list link functions", () => {
       .then((href) => {
         cy.get(".carousel-inner")
           .first()
-          .find("a")
+          .find("img")
           .click()
           .then(() => {
             cy.url().should("include", href);
