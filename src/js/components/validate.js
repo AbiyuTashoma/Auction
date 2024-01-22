@@ -40,7 +40,7 @@ export function validateUrl(urlValue) {
 }
 
 export function validateLength(txt, minLen = 8, maxLen = 500) {
-  const actualLength = txt.length;
+  const actualLength = txt.trim().length;
 
   return actualLength >= minLen && actualLength <= maxLen;
 }
