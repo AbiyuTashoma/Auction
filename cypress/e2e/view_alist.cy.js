@@ -9,12 +9,19 @@ describe("Verify view a list link functions", () => {
       .find("a")
       .should("have.attr", "href")
       .then((href) => {
-        cy.get(".card-body")
+        cy.get(".carousel-inner")
           .first()
           .find("a")
-          .click()
-          .then(() => {
-            cy.url().should("include", href);
+          .should("have.attr", "href")
+          .then((href2) => {
+            cy.get(".card-body")
+              .first()
+              .find("a")
+              .click()
+              .then(() => {
+                cy.url().should("include", href);
+                expect(href).to.equal(href2);
+              });
           });
       });
   });
