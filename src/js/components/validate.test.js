@@ -4,6 +4,7 @@ import {
   validateUrl,
   validateLength,
   validateNumber,
+  validateDate,
 } from "./validate";
 
 const mockValidName = "name_";
@@ -14,6 +15,8 @@ const mockValidUrl = "https://www.noroff.no/";
 const mockInvalidUrl = "hts://www.noroff.n/";
 const mockValidNumber = 2;
 const mockInvalidNumber = "a";
+const mockValidDate = "2030-01-12T02:00";
+const mockInvalidDate = "2023-01-12T02:00";
 
 describe("verify validate name method functions", () => {
   it("validates allowed characters and length", () => {
@@ -71,5 +74,16 @@ describe("verify validate number method functions", () => {
   it("invalidates non-number values", () => {
     const vNumTwo = validateNumber(mockInvalidNumber);
     expect(vNumTwo).toBe(false);
+  });
+});
+
+describe("verify validate date method functions", () => {
+  it("validates dates later than now", () => {
+    const vDateOne = validateDate(mockValidDate);
+    expect(vDateOne).toBe(true);
+  });
+  it("invalidates dates older than now", () => {
+    const vDateTwo = validateDate(mockInvalidDate);
+    expect(vDateTwo).toBe(false);
   });
 });
