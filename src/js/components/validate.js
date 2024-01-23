@@ -48,3 +48,9 @@ export function validateLength(txt, minLen = 8, maxLen = 500) {
 export function validateNumber(nbr) {
   return nbr > 0;
 }
+
+export function validateDate(dte) {
+  const newDate = new Date();
+  const dateDate = new Date(dte);
+  return dateDate > newDate;
+}
