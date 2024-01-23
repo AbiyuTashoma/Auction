@@ -50,6 +50,10 @@ describe("Verify only logged in can create list", () => {
       "have.text",
       "Add proper url. Urls are separated by comma",
     );
+    cy.get(".note-enddate").should(
+      "have.text",
+      "Add proper end date and time.",
+    );
     cy.get(".user-menu").click();
     cy.get(".logout-btn").click();
   });
