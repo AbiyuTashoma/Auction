@@ -1,16 +1,10 @@
 beforeEach(() => {
   cy.visit("/");
+  cy.intercept("POST", "https://api.noroff.dev/api/v1/auction/listings", {
+    statusCode: 201,
+    body: createListResponse,
+  });
 });
-
-const lTitle = " ";
-const lDescription = "ivld";
-const lUrl = "http://www";
-const lDate = "2024-01-12T02:00";
-
-const validListTitle = "Title";
-const validListDescription = "Valid Description";
-const validListUrl = "https://unsplash.com/photos/blue";
-const ValidListDate = "2030-01-12T02:00";
 
 const createListResponse = {
   created: "2024-01-24T18:43:19.834Z",
@@ -22,6 +16,16 @@ const createListResponse = {
   title: "Dogs",
   updated: "2024-01-24T18:43:19.834Z",
 };
+
+const lTitle = " ";
+const lDescription = "ivld";
+const lUrl = "http://www";
+const lDate = "2024-01-12T02:00";
+
+const validListTitle = "Title";
+const validListDescription = "Valid Description";
+const validListUrl = "https://unsplash.com/photos/blue";
+const ValidListDate = "2030-01-12T02:00";
 
 const validEmail = "student2@stud.noroff.no";
 const validPassword = "12345678";
@@ -70,11 +74,6 @@ describe("Verify logged in user can create a list", () => {
       "have.text",
       "Add proper end date and time.",
     );
-
-    cy.intercept("POST", "https://api.noroff.dev/api/v1/auction/listings", {
-      statusCode: 201,
-      body: createListResponse,
-    });
 
     cy.get("#list-title").clear().type(validListTitle);
     cy.get("#list-description").clear().type(validListDescription);
