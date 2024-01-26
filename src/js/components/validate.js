@@ -20,7 +20,7 @@ export function validateName(stringValue, minLenText = 1, maxLenText = 20) {
  * @returns {boolean}
  */
 export function validateEmail(emailValue) {
-  const regEx = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const regEx = /^[\w-.]+@stud.noroff.no/;
   const match = regEx.test(emailValue);
   return match;
 }
