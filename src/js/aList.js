@@ -133,13 +133,6 @@ async function bid(event) {
         "text-danger",
       );
     }
-  } else {
-    setFeedback(
-      bidNote,
-      bidNote,
-      "Enter proper bid and try again",
-      "text-danger",
-    );
   }
 }
 
