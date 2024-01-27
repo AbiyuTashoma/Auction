@@ -12,6 +12,10 @@ import { createFeedHtml } from "./components/feedHtml.js";
 import { searchText } from "./components/search.js";
 import { setFeedback } from "./components/displayMessage.js";
 
+/**
+ * Loads and displays lists
+ * @param {string} srt sort string
+ */
 async function loadFeed(srt = "created") {
   feedContainer.innerHTML = loading;
   const feedResponse = await apiRequest(feedURL + `&sort=${srt}`);
@@ -30,6 +34,11 @@ async function loadFeed(srt = "created") {
   }
 }
 
+/**
+ * searches and displays lists containing the search value
+ * @param {event} event
+ * @returns
+ */
 async function search(event) {
   event.preventDefault();
   const searchValue = searchContainer.value.toLowerCase();
@@ -54,6 +63,9 @@ async function search(event) {
   }
 }
 
+/**
+ * sorts lists based selection
+ */
 sortByContainer.onchange = function () {
   const sortValue = sortByContainer.value;
   resultContainer.innerHTML = "";

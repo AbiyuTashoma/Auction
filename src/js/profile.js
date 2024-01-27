@@ -18,6 +18,9 @@ const updateAvatarContainer = document.querySelector("#update-form");
 const profileListingURL =
   BASE_URL + `/profiles/${currentUser["name"]}` + `?_listings=true`;
 
+/**
+ * displays lists created by the profile
+ */
 async function profileLists() {
   const pfListOption = {
     method: "GET",
@@ -55,6 +58,11 @@ async function profileLists() {
 }
 
 profileLists();
+
+/**
+ * validates and updates profile avatar
+ * @param {event} event
+ */
 async function submitUpdate(event) {
   event.preventDefault();
 

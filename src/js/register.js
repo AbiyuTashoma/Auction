@@ -1,5 +1,17 @@
 import { apiRequest } from "./components/apiRequest.js";
-import { registerURL } from "./components/variables.js";
+import {
+  registerURL,
+  registerNameContainer,
+  registerEmailContainer,
+  registerPasswordContainer,
+  registerAvatarContainer,
+  noteNameContainer,
+  noteEmailContainer,
+  notePasswordContainer,
+  noteAvatarContainer,
+  successContainer,
+  registerFormContainer,
+} from "./components/variables.js";
 import {
   validateName,
   validateEmail,
@@ -8,19 +20,6 @@ import {
 } from "./components/validate.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
 import { defaultAvatar } from "./components/variables.js";
-
-const registerNameContainer = document.querySelector("#register-name");
-const registerEmailContainer = document.querySelector("#register-email");
-const registerPasswordContainer = document.querySelector("#register-password");
-const registerAvatarContainer = document.querySelector("#register-avatar");
-
-const noteNameContainer = document.querySelector(".note-name");
-const noteEmailContainer = document.querySelector(".note-email");
-const notePasswordContainer = document.querySelector(".note-password");
-const noteAvatarContainer = document.querySelector(".note-avatar");
-const successContainer = document.querySelector(".feedback-success");
-
-const registerFormContainer = document.querySelector(".register-form");
 
 //Clear error oninput
 registerNameContainer.oninput = function () {
@@ -40,7 +39,7 @@ registerAvatarContainer.oninput = function () {
   clearFeedback(successContainer, successContainer);
 };
 
-//validate input
+//validate input and register user
 /**
  * validates and registers user
  * @param {event} event
@@ -122,29 +121,20 @@ async function validate(event) {
 
     const registerResponse = await apiRequest(registerURL, registerOption);
 
-    if (registerResponse["output"] == "json") {
-      if (registerResponse["json"]["id"]) {
-        setFeedback(
-          successContainer,
-          successContainer,
-          "Registration successful, You are now able to login!",
-          "text-success",
-        );
-        registerFormContainer.reset();
-        return;
-      } else if (registerResponse["json"]["errors"][0]) {
-        setFeedback(
-          successContainer,
-          successContainer,
-          registerResponse["json"]["errors"][0]["message"],
-          "text-danger",
-        );
-      }
+    if (registerResponse["json"]["id"]) {
+      setFeedback(
+        successContainer,
+        successContainer,
+        "Registration successful, You are now able to login!",
+        "text-success",
+      );
+      registerFormContainer.reset();
+      return;
     } else {
       setFeedback(
         successContainer,
         successContainer,
-        "Unknown error, please try again",
+        `Contact us and provide error code: ${registerResponse["json"]["statusCode"]}`,
         "text-danger",
       );
     }

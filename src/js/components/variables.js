@@ -6,12 +6,31 @@ export const feedURL = listingsURL + "?_active=true";
 export const defaultAvatar =
   "https://robohash.org/5f735a19afe448937c8ff46ab8c6c3ea?set=set4&bgset=&size=400x400";
 
-export const loginBtn = document.querySelector(".login-btn");
+//Login variables
+export const loginEmailContainer = document.querySelector("#login-email");
+export const loginPasswordContainer = document.querySelector("#login-password");
+export const feedbackErrorContainer = document.querySelector(".feedback-error");
+export const loginFormContainer = document.querySelector(".login-form");
+
 export const loggedOutContainer = document.querySelectorAll(".logged-out");
 export const loggedInContainer = document.querySelectorAll(".logged-in");
 export const logoutBtn = document.querySelector(".logout-btn");
 export const userMenuContainer = document.querySelector(".user-menu");
 export const creditContainer = document.querySelector(".credits");
+
+//Register variables
+export const registerNameContainer = document.querySelector("#register-name");
+export const registerEmailContainer = document.querySelector("#register-email");
+export const registerPasswordContainer =
+  document.querySelector("#register-password");
+export const registerAvatarContainer =
+  document.querySelector("#register-avatar");
+export const noteNameContainer = document.querySelector(".note-name");
+export const noteEmailContainer = document.querySelector(".note-email");
+export const notePasswordContainer = document.querySelector(".note-password");
+export const noteAvatarContainer = document.querySelector(".note-avatar");
+export const successContainer = document.querySelector(".feedback-success");
+export const registerFormContainer = document.querySelector(".register-form");
 
 export const profileInfoContainer = document.querySelector(".profile-info");
 export const profileFeedContainer = document.querySelector(".profile-feed");
