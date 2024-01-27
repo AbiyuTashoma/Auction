@@ -13,6 +13,20 @@ export const logoutBtn = document.querySelector(".logout-btn");
 export const userMenuContainer = document.querySelector(".user-menu");
 export const creditContainer = document.querySelector(".credits");
 
+//Register variables
+export const registerNameContainer = document.querySelector("#register-name");
+export const registerEmailContainer = document.querySelector("#register-email");
+export const registerPasswordContainer =
+  document.querySelector("#register-password");
+export const registerAvatarContainer =
+  document.querySelector("#register-avatar");
+export const noteNameContainer = document.querySelector(".note-name");
+export const noteEmailContainer = document.querySelector(".note-email");
+export const notePasswordContainer = document.querySelector(".note-password");
+export const noteAvatarContainer = document.querySelector(".note-avatar");
+export const successContainer = document.querySelector(".feedback-success");
+export const registerFormContainer = document.querySelector(".register-form");
+
 export const profileInfoContainer = document.querySelector(".profile-info");
 export const profileFeedContainer = document.querySelector(".profile-feed");
 
