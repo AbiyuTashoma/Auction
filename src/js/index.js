@@ -6,11 +6,14 @@ import {
   resultContainer,
   sortByContainer,
   loading,
+  viewMoreButton,
+  offset,
 } from "./components/variables.js";
 import { apiRequest } from "./components/apiRequest.js";
 import { createFeedHtml } from "./components/feedHtml.js";
 import { searchText } from "./components/search.js";
 import { setFeedback } from "./components/displayMessage.js";
+import { setOffset, resetOffset } from "./components/offset.js";
 
 /**
  * Loads and displays lists
@@ -24,6 +27,8 @@ async function loadFeed(srt = "created") {
       feedResponse["json"],
       "src/html/",
     );
+    resetOffset(offset);
+    console.log(offset["offset"]);
   } else {
     setFeedback(
       feedContainer,
@@ -52,7 +57,7 @@ async function search(event) {
   if (fResponse["json"][0]["id"]) {
     const searchResult = await searchText(fResponse["json"], searchValue);
     resultContainer.innerHTML = `<p>${searchResult.length} results found</p>`;
-    feedContainer.innerHTML = await createFeedHtml(searchResult);
+    feedContainer.innerHTML = await createFeedHtml(searchResult, "src/html/");
   } else {
     setFeedback(
       feedContainer,
@@ -72,6 +77,34 @@ sortByContainer.onchange = function () {
   loadFeed(sortValue);
 };
 
-loadFeed();
+/**
+ * fetches next 100 lists and displays
+ */
+async function viewMore() {
+  const srtValue = sortByContainer.value;
+  const viewResponse = await apiRequest(
+    feedURL + `&sort=${srtValue}&offset=${offset["offset"]}`,
+  );
+  if (viewResponse["json"].length < 100) {
+    viewMoreButton.disabled = "true";
+  }
+  if (viewResponse["json"][0]["id"]) {
+    feedContainer.innerHTML += await createFeedHtml(
+      viewResponse["json"],
+      "src/html/",
+    );
+    setOffset(offset, 100);
+    console.log(offset["offset"]);
+  } else {
+    setFeedback(
+      feedContainer,
+      feedContainer,
+      "Unknown error, try again",
+      "text-danger text-center",
+    );
+  }
+}
 
+loadFeed();
 searchFormContainer.addEventListener("submit", search);
+viewMoreButton.addEventListener("click", viewMore);
