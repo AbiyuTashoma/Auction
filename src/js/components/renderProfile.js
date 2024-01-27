@@ -1,3 +1,8 @@
+/**
+ * creates and displays profile information inside an html element
+ * @param {Response} prfl json response object
+ * @param {HTMLElement} prflContainer
+ */
 export function viewProfile(prfl, prflContainer) {
   prflContainer.innerHTML = `<div class="avatar-container border position-relative mx-auto">
                                 <img src="${prfl["avatar"]}" class="avatar-bigger mx-auto" alt="avatar"/>
