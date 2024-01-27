@@ -2,7 +2,7 @@ beforeEach(() => {
   cy.visit("/");
 });
 
-const invalidEmail = "invalid_email@stud.noroff.no";
+const invalidEmail = "unreg_user_email@stud.noroff.no";
 const invalidPassword = "123password45678";
 
 describe("Verify feedback on login failure functionality", () => {

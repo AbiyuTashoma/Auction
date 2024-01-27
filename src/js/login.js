@@ -1,14 +1,12 @@
 import { apiRequest } from "./components/apiRequest.js";
-import { loginURL } from "./components/variables.js";
+import {
+  loginURL,
+  loginEmailContainer,
+  loginPasswordContainer,
+  feedbackErrorContainer,
+  loginFormContainer,
+} from "./components/variables.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
-import { currentUser } from "./components/profileData.js";
-
-console.log(currentUser);
-
-const loginEmailContainer = document.querySelector("#login-email");
-const loginPasswordContainer = document.querySelector("#login-password");
-const feedbackErrorContainer = document.querySelector(".feedback-error");
-const loginFormContainer = document.querySelector(".login-form");
 
 //clear error message oninput
 loginEmailContainer.oninput = function () {
