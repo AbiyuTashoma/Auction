@@ -1,3 +1,9 @@
+/**
+ * creates html element from api response object
+ * @param {Response} rspns json response object
+ * @param {string} path relative patch
+ * @returns {HTMLElement}
+ */
 export async function createFeedHtml(rspns, path = "") {
   let html = "";
   let i = 0;
@@ -37,6 +43,14 @@ export async function createFeedHtml(rspns, path = "") {
   return html;
 }
 
+/**
+ * creates carousel html element out of an array of media url's
+ * assign default media value if not
+ * @param {Array} mda
+ * @param {string} eid
+ * @param {string} relativePath
+ * @returns {HTMLElement}
+ */
 export function createCarousel(mda, eid, relativePath) {
   let carousel = "";
   let j = 0;

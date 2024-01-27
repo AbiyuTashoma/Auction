@@ -15,6 +15,10 @@ import {
 } from "./components/validate.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
 
+/**
+ * Validates and submits form
+ * @param {event} event
+ */
 function submitFeedback(event) {
   event.preventDefault();
 
@@ -71,6 +75,7 @@ function submitFeedback(event) {
 
 contactForm.addEventListener("submit", submitFeedback);
 
+//clear error on input
 contactName.oninput = function () {
   clearFeedback(noteContactName, contactName);
   clearFeedback(contactSuccess, contactSuccess);

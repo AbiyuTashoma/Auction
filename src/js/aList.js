@@ -37,6 +37,9 @@ const aListURL = listingsURL + "/" + productId;
 const aListURLwithBids = aListURL + "?&_bids=true";
 const bidURL = aListURL + "/bids";
 
+/**
+ * fetches and displays a lists details
+ */
 async function getAList() {
   innerCarousel.innerHTML = loading;
   const listResponse = await apiRequest(aListURLwithBids);
@@ -62,6 +65,11 @@ async function getAList() {
   }
 }
 
+/**
+ * Validates and submits bid on a list
+ * @param {event} event
+ * @returns
+ */
 async function bid(event) {
   event.preventDefault();
 
@@ -136,6 +144,10 @@ async function bid(event) {
   }
 }
 
+/**
+ * Fetches and updates profile information
+ * @param {url} pflURL profile url
+ */
 async function getProfile(pflURL) {
   const getOption = {
     method: "GET",

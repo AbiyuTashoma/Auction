@@ -22,6 +22,11 @@ import { accessToken, isLoggedIn } from "./components/profileData.js";
 import { refresh } from "./components/reload.js";
 import { toArray } from "./components/stringToArray.js";
 
+/**
+ * Validates and creates list item
+ * @param {event} event
+ * @returns
+ */
 async function createList(event) {
   event.preventDefault();
 
@@ -126,6 +131,7 @@ async function createList(event) {
 
 createlistForm.addEventListener("submit", createList);
 
+//Clear error on input
 titleContainer.oninput = function () {
   clearFeedback(titleNoteContainer, titleContainer);
   clearFeedback(listNoteContainer, listNoteContainer);
