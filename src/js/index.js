@@ -14,6 +14,7 @@ import { createFeedHtml } from "./components/feedHtml.js";
 import { searchText } from "./components/search.js";
 import { setFeedback } from "./components/displayMessage.js";
 import { setOffset, resetOffset } from "./components/offset.js";
+import { cleanDescription } from "./components/clean_description.js";
 
 /**
  * Loads and displays lists
@@ -54,8 +55,10 @@ async function search(event) {
 
   feedContainer.innerHTML = loading;
   const fResponse = await apiRequest(feedURL + `&sort=created`);
+  console.log(fResponse["json"]);
   if (fResponse["json"][0]["id"]) {
-    const searchResult = await searchText(fResponse["json"], searchValue);
+    const cleanResult = await cleanDescription(fResponse["json"]);
+    const searchResult = await searchText(cleanResult, searchValue);
     resultContainer.innerHTML = `<p>${searchResult.length} results found</p>`;
     feedContainer.innerHTML = await createFeedHtml(searchResult, "src/html/");
     resetOffset(offset);
@@ -92,10 +95,8 @@ async function viewMore() {
 
   console.log(viewResponse);
   if (viewResponse["json"][0]["id"]) {
-    const viewSearchsResult = await searchText(
-      viewResponse["json"],
-      searchValue,
-    );
+    const cleanViewResult = await cleanDescription(viewResponse["json"]);
+    const viewSearchsResult = await searchText(cleanViewResult, searchValue);
 
     feedContainer.innerHTML += await createFeedHtml(
       viewSearchsResult,
