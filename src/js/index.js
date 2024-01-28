@@ -8,6 +8,7 @@ import {
   loading,
   viewMoreButton,
   offset,
+  noteViewMore,
 } from "./components/variables.js";
 import { apiRequest } from "./components/apiRequest.js";
 import { createFeedHtml } from "./components/feedHtml.js";
@@ -23,13 +24,14 @@ import { cleanDescription } from "./components/clean_description.js";
 async function loadFeed(srt = "created") {
   feedContainer.innerHTML = loading;
   const feedResponse = await apiRequest(feedURL + `&sort=${srt}`);
+  viewMoreButton.disabled = "false";
+
   if (feedResponse["json"][0]["id"]) {
     feedContainer.innerHTML = await createFeedHtml(
       feedResponse["json"],
       "src/html/",
     );
     resetOffset(offset);
-    console.log(offset["offset"]);
   } else {
     setFeedback(
       feedContainer,
@@ -55,14 +57,13 @@ async function search(event) {
 
   feedContainer.innerHTML = loading;
   const fResponse = await apiRequest(feedURL + `&sort=created`);
-  console.log(fResponse["json"]);
   if (fResponse["json"][0]["id"]) {
     const cleanResult = await cleanDescription(fResponse["json"]);
     const searchResult = await searchText(cleanResult, searchValue);
     resultContainer.innerHTML = `<p>${searchResult.length} results found</p>`;
     feedContainer.innerHTML = await createFeedHtml(searchResult, "src/html/");
     resetOffset(offset);
-    console.log(offset["offset"]);
+    viewMoreButton.disabled = "false";
   } else {
     setFeedback(
       feedContainer,
@@ -80,6 +81,7 @@ sortByContainer.onchange = function () {
   const sortValue = sortByContainer.value;
   resultContainer.innerHTML = "";
   loadFeed(sortValue);
+  searchFormContainer.reset();
 };
 
 /**
@@ -93,24 +95,21 @@ async function viewMore() {
     feedURL + `&sort=${srtValue}&offset=${offset["offset"]}`,
   );
 
-  console.log(viewResponse);
   if (viewResponse["json"][0]["id"]) {
     const cleanViewResult = await cleanDescription(viewResponse["json"]);
     const viewSearchsResult = await searchText(cleanViewResult, searchValue);
-
     feedContainer.innerHTML += await createFeedHtml(
       viewSearchsResult,
       "src/html/",
     );
     setOffset(offset, 100);
-    if (viewSearchsResult.length < 100) {
+    if (viewResponse["json"].length < 100) {
       viewMoreButton.disabled = "true";
     }
-    console.log(offset["offset"]);
   } else {
     setFeedback(
-      feedContainer,
-      feedContainer,
+      noteViewMore,
+      noteViewMore,
       "Unknown error, try again",
       "text-danger text-center",
     );

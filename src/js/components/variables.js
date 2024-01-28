@@ -6,8 +6,6 @@ export const feedURL = listingsURL + "?_active=true";
 export const defaultAvatar =
   "https://robohash.org/5f735a19afe448937c8ff46ab8c6c3ea?set=set4&bgset=&size=400x400";
 
-export const offset = { offset: 100 };
-
 //Login variables
 export const loginEmailContainer = document.querySelector("#login-email");
 export const loginPasswordContainer = document.querySelector("#login-password");
@@ -45,6 +43,8 @@ export const searchContainer = document.querySelector("#search");
 export const resultContainer = document.querySelector(".result");
 export const sortByContainer = document.querySelector("#sortBy");
 export const viewMoreButton = document.querySelector(".view-more");
+export const noteViewMore = document.querySelector(".note-viewmore");
+export const offset = { offset: 100 };
 
 //Create list variables
 export const listNoteContainer = document.querySelector(".note-createlist");
