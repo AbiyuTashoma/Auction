@@ -13,19 +13,19 @@ import {
 import { apiRequest } from "./components/apiRequest.js";
 import { createFeedHtml } from "./components/feedHtml.js";
 import { searchText } from "./components/search.js";
-import { setFeedback } from "./components/displayMessage.js";
+import { clearFeedback, setFeedback } from "./components/displayMessage.js";
 import { setOffset, resetOffset } from "./components/offset.js";
 import { cleanDescription } from "./components/clean_description.js";
+import { disable } from "./components/enable_disable.js";
 
 /**
  * Loads and displays lists
  * @param {string} srt sort string
  */
 async function loadFeed(srt = "created") {
+  clearFeedback(noteViewMore, noteViewMore);
   feedContainer.innerHTML = loading;
   const feedResponse = await apiRequest(feedURL + `&sort=${srt}`);
-  viewMoreButton.disabled = "false";
-
   if (feedResponse["json"][0]["id"]) {
     feedContainer.innerHTML = await createFeedHtml(
       feedResponse["json"],
@@ -63,7 +63,8 @@ async function search(event) {
     resultContainer.innerHTML = `<p>${searchResult.length} results found</p>`;
     feedContainer.innerHTML = await createFeedHtml(searchResult, "src/html/");
     resetOffset(offset);
-    viewMoreButton.disabled = "false";
+    clearFeedback(noteViewMore, noteViewMore);
+    disable(viewMoreButton);
   } else {
     setFeedback(
       feedContainer,
@@ -104,7 +105,12 @@ async function viewMore() {
     );
     setOffset(offset, 100);
     if (viewResponse["json"].length < 100) {
-      viewMoreButton.disabled = "true";
+      setFeedback(
+        noteViewMore,
+        noteViewMore,
+        "End of lists",
+        "text-danger text-center",
+      );
     }
   } else {
     setFeedback(
