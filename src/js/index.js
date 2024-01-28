@@ -58,6 +58,8 @@ async function search(event) {
     const searchResult = await searchText(fResponse["json"], searchValue);
     resultContainer.innerHTML = `<p>${searchResult.length} results found</p>`;
     feedContainer.innerHTML = await createFeedHtml(searchResult, "src/html/");
+    resetOffset(offset);
+    console.log(offset["offset"]);
   } else {
     setFeedback(
       feedContainer,
@@ -82,18 +84,27 @@ sortByContainer.onchange = function () {
  */
 async function viewMore() {
   const srtValue = sortByContainer.value;
+  const searchValue = searchContainer.value.toLowerCase();
+
   const viewResponse = await apiRequest(
     feedURL + `&sort=${srtValue}&offset=${offset["offset"]}`,
   );
-  if (viewResponse["json"].length < 100) {
-    viewMoreButton.disabled = "true";
-  }
+
+  console.log(viewResponse);
   if (viewResponse["json"][0]["id"]) {
-    feedContainer.innerHTML += await createFeedHtml(
+    const viewSearchsResult = await searchText(
       viewResponse["json"],
+      searchValue,
+    );
+
+    feedContainer.innerHTML += await createFeedHtml(
+      viewSearchsResult,
       "src/html/",
     );
     setOffset(offset, 100);
+    if (viewSearchsResult.length < 100) {
+      viewMoreButton.disabled = "true";
+    }
     console.log(offset["offset"]);
   } else {
     setFeedback(
