@@ -6,6 +6,8 @@ export const feedURL = listingsURL + "?_active=true";
 export const defaultAvatar =
   "https://robohash.org/5f735a19afe448937c8ff46ab8c6c3ea?set=set4&bgset=&size=400x400";
 
+export const offset = { offset: 100 };
+
 //Login variables
 export const loginEmailContainer = document.querySelector("#login-email");
 export const loginPasswordContainer = document.querySelector("#login-password");
@@ -32,15 +34,19 @@ export const noteAvatarContainer = document.querySelector(".note-avatar");
 export const successContainer = document.querySelector(".feedback-success");
 export const registerFormContainer = document.querySelector(".register-form");
 
+//Profile variables
 export const profileInfoContainer = document.querySelector(".profile-info");
 export const profileFeedContainer = document.querySelector(".profile-feed");
 
+//Feed variables
 export const feedContainer = document.querySelector(".feed");
 export const searchFormContainer = document.querySelector(".search-form");
 export const searchContainer = document.querySelector("#search");
 export const resultContainer = document.querySelector(".result");
 export const sortByContainer = document.querySelector("#sortBy");
+export const viewMoreButton = document.querySelector(".view-more");
 
+//Create list variables
 export const listNoteContainer = document.querySelector(".note-createlist");
 export const createlistForm = document.querySelector("#createlist");
 export const titleContainer = document.querySelector("#list-title");
@@ -53,6 +59,7 @@ export const mediaNoteContainer = document.querySelector(".note-media");
 export const enddateContainer = document.querySelector("#list-enddate");
 export const enddateNoteContainer = document.querySelector(".note-enddate");
 
+//Alist variables
 export const innerCarousel = document.querySelector(".carousel-inner");
 export const title = document.querySelector(".title");
 export const description = document.querySelector(".description");
@@ -63,6 +70,7 @@ export const bidForm = document.querySelector(".bid-form");
 export const bidNote = document.querySelector(".note-bid");
 export const aListNote = document.querySelector(".a-list-note");
 
+//Contactus variables
 export const contactForm = document.querySelector(".contact-form");
 export const contactSuccess = document.querySelector(".contact-success");
 export const contactName = document.querySelector("#contact-name");
@@ -74,6 +82,7 @@ export const noteContactMessage = document.querySelector(
   ".note-contactmessage",
 );
 
+//loading
 export const loading = `<div class="text-center">
                 <div class="spinner-border mt-3 text-primary" style="width: 4rem; height: 4rem;" role="status">
                     <span class="visually-hidden">Loading...</span>
