@@ -1,7 +1,7 @@
-export function disable(btn) {
-  btn.disabled = "true";
+export function disable(btnd) {
+  btnd.disabled = true;
 }
 
-export function enable(btn2) {
-  btn2.disabled = "true";
+export function enable(btne) {
+  btne.disabled = false;
 }

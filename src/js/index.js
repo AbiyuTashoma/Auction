@@ -16,7 +16,7 @@ import { searchText } from "./components/search.js";
 import { clearFeedback, setFeedback } from "./components/displayMessage.js";
 import { setOffset, resetOffset } from "./components/offset.js";
 import { cleanDescription } from "./components/clean_description.js";
-import { disable } from "./components/enable_disable.js";
+import { disable, enable } from "./components/enable_disable.js";
 
 /**
  * Loads and displays lists
@@ -32,6 +32,7 @@ async function loadFeed(srt = "created") {
       "src/html/",
     );
     resetOffset(offset);
+    enable(viewMoreButton);
   } else {
     setFeedback(
       feedContainer,
@@ -50,13 +51,14 @@ async function loadFeed(srt = "created") {
 async function search(event) {
   event.preventDefault();
   const searchValue = searchContainer.value.toLowerCase();
+  const searchSortValue = sortByContainer.value;
 
   if (!searchValue.length) {
     return;
   }
 
   feedContainer.innerHTML = loading;
-  const fResponse = await apiRequest(feedURL + `&sort=created`);
+  const fResponse = await apiRequest(feedURL + `&sort=${searchSortValue}`);
   if (fResponse["json"][0]["id"]) {
     const cleanResult = await cleanDescription(fResponse["json"]);
     const searchResult = await searchText(cleanResult, searchValue);
@@ -64,7 +66,7 @@ async function search(event) {
     feedContainer.innerHTML = await createFeedHtml(searchResult, "src/html/");
     resetOffset(offset);
     clearFeedback(noteViewMore, noteViewMore);
-    disable(viewMoreButton);
+    enable(viewMoreButton);
   } else {
     setFeedback(
       feedContainer,
@@ -78,11 +80,31 @@ async function search(event) {
 /**
  * sorts lists based selection
  */
-sortByContainer.onchange = function () {
+sortByContainer.onchange = async function () {
   const sortValue = sortByContainer.value;
+  const ssValue = searchContainer.value.toLowerCase();
   resultContainer.innerHTML = "";
-  loadFeed(sortValue);
-  searchFormContainer.reset();
+
+  const sortResponse = await apiRequest(feedURL + `&sort=${sortValue}`);
+
+  if (sortResponse["json"][0]["id"]) {
+    const cleanSortResult = await cleanDescription(sortResponse["json"]);
+    const sortSearchsResult = await searchText(cleanSortResult, ssValue);
+
+    feedContainer.innerHTML = await createFeedHtml(
+      sortSearchsResult,
+      "src/html/",
+    );
+    resetOffset(offset);
+    enable(viewMoreButton);
+  } else {
+    setFeedback(
+      feedContainer,
+      feedContainer,
+      "Unknown error, try again",
+      "text-danger text-center",
+    );
+  }
 };
 
 /**
@@ -91,6 +113,7 @@ sortByContainer.onchange = function () {
 async function viewMore() {
   const srtValue = sortByContainer.value;
   const searchValue = searchContainer.value.toLowerCase();
+  resultContainer.innerHTML = "";
 
   const viewResponse = await apiRequest(
     feedURL + `&sort=${srtValue}&offset=${offset["offset"]}`,
@@ -105,12 +128,7 @@ async function viewMore() {
     );
     setOffset(offset, 100);
     if (viewResponse["json"].length < 100) {
-      setFeedback(
-        noteViewMore,
-        noteViewMore,
-        "End of lists",
-        "text-danger text-center",
-      );
+      disable(viewMoreButton);
     }
   } else {
     setFeedback(
