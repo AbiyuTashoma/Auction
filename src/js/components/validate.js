@@ -1,7 +1,8 @@
 /**
- * validates text length trimming spaces and checks for punctuation
+ * validates, matches string and length
  * @param {Text} stringValue
- * @param {Number} [minLenText] text length
+ * @param {Number} [minLenText] minimum text length
+ * @param {Number} [maxLenText] maximum text length
  * @returns {boolean}
  */
 export function validateName(stringValue, minLenText = 1, maxLenText = 20) {
@@ -15,12 +16,12 @@ export function validateName(stringValue, minLenText = 1, maxLenText = 20) {
 }
 
 /**
- * validates email
+ * validates email and matches @stud.noroff.no
  * @param {Text} emailValue
  * @returns {boolean}
  */
 export function validateEmail(emailValue) {
-  const regEx = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const regEx = /^[\w-.]+@stud.noroff.no/;
   const match = regEx.test(emailValue);
   return match;
 }
@@ -39,12 +40,35 @@ export function validateUrl(urlValue) {
   return urlMatch;
 }
 
+/**
+ * Trims, checks length if it is within a given range
+ * @param {string} txt
+ * @param {Number} minLen
+ * @param {Number} maxLen
+ * @returns {Boolean}
+ */
 export function validateLength(txt, minLen = 8, maxLen = 500) {
-  const actualLength = txt.length;
+  const actualLength = txt.trim().length;
 
   return actualLength >= minLen && actualLength <= maxLen;
 }
 
+/**
+ * Validates whether a number is above 0
+ * @param {Number} nbr
+ * @returns
+ */
 export function validateNumber(nbr) {
   return nbr > 0;
+}
+
+/**
+ * Validates whether a date is older or later than current date
+ * @param {Date} dte date
+ * @returns
+ */
+export function validateDate(dte) {
+  const newDate = new Date();
+  const dateDate = new Date(dte);
+  return dateDate > newDate;
 }

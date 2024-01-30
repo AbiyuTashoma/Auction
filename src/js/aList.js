@@ -12,7 +12,7 @@ import {
   BASE_URL,
   aListNote,
 } from "./components/variables.js";
-import { apiRequest } from "./components/apirequest.js";
+import { apiRequest } from "./components/apiRequest.js";
 import {
   createListCarousel,
   getElement,
@@ -37,17 +37,13 @@ const aListURL = listingsURL + "/" + productId;
 const aListURLwithBids = aListURL + "?&_bids=true";
 const bidURL = aListURL + "/bids";
 
+/**
+ * fetches and displays a lists details
+ */
 async function getAList() {
   innerCarousel.innerHTML = loading;
   const listResponse = await apiRequest(aListURLwithBids);
-  if (listResponse["error"] || listResponse["json"]["errors"]) {
-    setFeedback(
-      aListNote,
-      aListNote,
-      "Unknown error, try again",
-      "text-danger text-center",
-    );
-  } else {
+  if (listResponse["json"]["id"]) {
     innerCarousel.innerHTML = await createListCarousel(
       listResponse["json"]["media"],
     );
@@ -56,12 +52,24 @@ async function getAList() {
       listResponse["json"],
       "description",
     );
-    bidEnddate.innerHTML = await getEnddate(listResponse["json"]);
+    bidEnddate.innerHTML = await getEnddate(listResponse["json"]["endsAt"]);
     currentBid.innerHTML = await getMaxBid(listResponse["json"]["bids"]);
     newBid.innerHTML = await getNewBid(listResponse["json"]);
+  } else {
+    setFeedback(
+      aListNote,
+      aListNote,
+      "Unknown error, try again",
+      "text-danger text-center",
+    );
   }
 }
 
+/**
+ * Validates and submits bid on a list
+ * @param {event} event
+ * @returns
+ */
 async function bid(event) {
   event.preventDefault();
 
@@ -133,16 +141,13 @@ async function bid(event) {
         "text-danger",
       );
     }
-  } else {
-    setFeedback(
-      bidNote,
-      bidNote,
-      "Enter proper bid and try again",
-      "text-danger",
-    );
   }
 }
 
+/**
+ * Fetches and updates profile information
+ * @param {url} pflURL profile url
+ */
 async function getProfile(pflURL) {
   const getOption = {
     method: "GET",

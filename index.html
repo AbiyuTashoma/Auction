@@ -7,16 +7,18 @@
     <link rel="stylesheet" href="/dist/css/index.css" />
     <title>Auction | Home</title>
   </head>
-  <body class="body-style">
+  <body class="body-style" id="totop">
     <header>
-      <section class="header-section d-flex justify-content-between">
-        <div class="m-4">
+      <section
+        class="header-section d-flex justify-content-between align-items-center"
+      >
+        <div class="m-2 m-sm-4" style="min-width: fit-content">
           <a class="logo text-decoration-none" href="index.html">
             <p class="auction">Auction</p>
             <p class="moto">Get it done!</p>
           </a>
         </div>
-        <div class="dropdown-center m-4 p-4">
+        <div class="dropdown-center m-2 m-sm-4 p-2 p-sm-4">
           <button
             type="button"
             class="custom-btn btn-primary position-relative dropdown-toggle border border-white"
@@ -41,7 +43,9 @@
               >
             </li>
             <li>
-              <a class="logged-out dropdown-item" href="src/html/register.html"
+              <a
+                class="register-btn logged-out dropdown-item"
+                href="src/html/register.html"
                 >Register</a
               >
             </li>
@@ -53,7 +57,9 @@
               >
             </li>
             <li>
-              <a class="dropdown-item" href="src/html/contact-us.html"
+              <a
+                class="contactus-btn dropdown-item"
+                href="src/html/contact-us.html"
                 >Contact us</a
               >
             </li>
@@ -171,6 +177,25 @@
         <div
           class="feed row row-cols-1 row-cols-sm-3 row-cols-lg-5 g-4 m-0"
         ></div>
+        <div class="text-center">
+          <div class="note-viewmore my-4"></div>
+          <div>
+            <button
+              class="view-more custom-btn btn-primary my-4"
+              aria-label="view more"
+            >
+              Load more +
+            </button>
+          </div>
+          <div>
+            <a
+              href="#totop"
+              class="custom-btn btn-outline-primary"
+              title="back to top"
+              >&#10595; Back to top</a
+            >
+          </div>
+        </div>
       </section>
     </main>
     <footer class="footer-style pt-3">

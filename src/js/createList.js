@@ -11,13 +11,22 @@ import {
   enddateContainer,
   enddateNoteContainer,
 } from "./components/variables.js";
-import { apiRequest } from "./components/apirequest.js";
-import { validateLength, validateUrl } from "./components/validate.js";
+import { apiRequest } from "./components/apiRequest.js";
+import {
+  validateLength,
+  validateUrl,
+  validateDate,
+} from "./components/validate.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
 import { accessToken, isLoggedIn } from "./components/profileData.js";
 import { refresh } from "./components/reload.js";
 import { toArray } from "./components/stringToArray.js";
 
+/**
+ * Validates and creates list item
+ * @param {event} event
+ * @returns
+ */
 async function createList(event) {
   event.preventDefault();
 
@@ -36,7 +45,7 @@ async function createList(event) {
 
   const validTitle = validateLength(title, 1, 50);
   const validDescription = validateLength(description, 5);
-  const validDate = validateLength(enddate, 16, 16);
+  const validDate = validateDate(enddate);
 
   if (!validTitle) {
     validList = false;
@@ -76,7 +85,7 @@ async function createList(event) {
     setFeedback(
       enddateNoteContainer,
       enddateContainer,
-      "Add proper date and time.",
+      "Add proper end date and time.",
       "text-danger",
     );
   }
@@ -122,6 +131,7 @@ async function createList(event) {
 
 createlistForm.addEventListener("submit", createList);
 
+//Clear error on input
 titleContainer.oninput = function () {
   clearFeedback(titleNoteContainer, titleContainer);
   clearFeedback(listNoteContainer, listNoteContainer);
