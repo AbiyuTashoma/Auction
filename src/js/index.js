@@ -85,6 +85,8 @@ sortByContainer.onchange = async function () {
   const ssValue = searchContainer.value.toLowerCase();
   resultContainer.innerHTML = "";
 
+  feedContainer.innerHTML = loading;
+
   const sortResponse = await apiRequest(feedURL + `&sort=${sortValue}`);
 
   if (sortResponse["json"][0]["id"]) {
