@@ -61,7 +61,7 @@ export function createCarousel(mda, eid, relativePath) {
     }
     carousel += `<div class="carousel-item ${active}">
                         <a href="${relativePath}alist.html?id=${eid}">
-                            <img src="${element}" class="card-img-top d-block w-100" alt="..."/>
+                            <img src="${element}" class="card-img-top d-block w-100" alt="failed to load image"/>
                         </a>
                     </div>`;
     j++;
