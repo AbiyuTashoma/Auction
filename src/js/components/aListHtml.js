@@ -50,7 +50,7 @@ export async function createListCarousel(mda) {
       active = "";
     }
     carousel += `<div class="carousel-item ${active}"> 
-                    <img src="${element}" class="card-img-top d-block w-100" alt="..."/>
+                    <img src="${element}" class="card-img-top d-block w-100" alt="failed to load image"/>
                 </div>`;
     j++;
   });
