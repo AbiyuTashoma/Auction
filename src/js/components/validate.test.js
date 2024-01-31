@@ -5,6 +5,7 @@ import {
   validateLength,
   validateNumber,
   validateDate,
+  validateMatch,
 } from "./validate";
 
 const mockValidName = "name_";
@@ -85,5 +86,16 @@ describe("verify validate date method functions", () => {
   it("invalidates dates older than now", () => {
     const vDateTwo = validateDate(mockInvalidDate);
     expect(vDateTwo).toBe(false);
+  });
+});
+
+describe("verify validate match method functions", () => {
+  it("validates values are identical", () => {
+    const vMatchOne = validateMatch(mockValidDate, mockValidDate);
+    expect(vMatchOne).toBe(true);
+  });
+  it("invalidates if values are not identical", () => {
+    const vMatchTwo = validateMatch(mockInvalidDate, mockValidDate);
+    expect(vMatchTwo).toBe(false);
   });
 });

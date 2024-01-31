@@ -54,6 +54,16 @@ export function validateLength(txt, minLen = 8, maxLen = 500) {
 }
 
 /**
+ * Validates if two values match
+ * @param {string} valueOne
+ * @param {string} valueTwo
+ * @returns {Boolean}
+ */
+export function validateMatch(valueOne, valueTwo) {
+  return valueOne === valueTwo;
+}
+
+/**
  * Validates whether a number is above 0
  * @param {Number} nbr
  * @returns
