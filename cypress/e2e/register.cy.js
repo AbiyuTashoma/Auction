@@ -25,6 +25,7 @@ describe("Verify register functionality", () => {
     cy.get("#register-name").type(rValidName);
     cy.get("#register-email").type(rValidEmail);
     cy.get("#register-password").type(rValidPassword);
+    cy.get("#register-confirm-password").type(rValidPassword);
     cy.get("#register-avatar").type(rValidAvatar);
 
     cy.get(".register-form").submit();

@@ -5,6 +5,7 @@ beforeEach(() => {
 const rName = "name";
 const rEmail = "invalid_email.noroff.no";
 const rPassword = "123pas";
+const rcPassword = "123password";
 const rAvatar = "http://www";
 
 describe("Verify feedback on register failure functionality", () => {
@@ -14,6 +15,7 @@ describe("Verify feedback on register failure functionality", () => {
     cy.get("#register-name").type(rName);
     cy.get("#register-email").type(rEmail);
     cy.get("#register-password").type(rPassword);
+    cy.get("#register-confirm-password").type(rcPassword);
 
     cy.get(".register-form").submit();
     cy.get(".feedback-success").should("have.text", "");
@@ -31,5 +33,10 @@ describe("Verify feedback on register failure functionality", () => {
     cy.get("#register-avatar").type(rAvatar);
     cy.get(".register-form").submit();
     cy.get(".note-avatar").should("have.text", "Enter valid url");
+
+    cy.get("#register-password").clear().type(rcPassword);
+    cy.get("#register-confirm-password").clear().type(rPassword);
+    cy.get(".register-form").submit();
+    cy.get(".note-password").should("have.text", "Passwords does not match");
   });
 });

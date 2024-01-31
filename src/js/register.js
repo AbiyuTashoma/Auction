@@ -4,6 +4,7 @@ import {
   registerNameContainer,
   registerEmailContainer,
   registerPasswordContainer,
+  registerConfirmPassword,
   registerAvatarContainer,
   noteNameContainer,
   noteEmailContainer,
@@ -17,6 +18,7 @@ import {
   validateEmail,
   validateUrl,
   validateLength,
+  validateMatch,
 } from "./components/validate.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
 import { defaultAvatar } from "./components/variables.js";
@@ -32,6 +34,12 @@ registerEmailContainer.oninput = function () {
 };
 registerPasswordContainer.oninput = function () {
   clearFeedback(notePasswordContainer, registerPasswordContainer);
+  clearFeedback(notePasswordContainer, registerConfirmPassword);
+  clearFeedback(successContainer, successContainer);
+};
+registerConfirmPassword.oninput = function () {
+  clearFeedback(notePasswordContainer, registerPasswordContainer);
+  clearFeedback(notePasswordContainer, registerConfirmPassword);
   clearFeedback(successContainer, successContainer);
 };
 registerAvatarContainer.oninput = function () {
@@ -52,11 +60,13 @@ async function validate(event) {
   const userName = registerNameContainer.value;
   const email = registerEmailContainer.value;
   const password = registerPasswordContainer.value;
+  const confirmPassword = registerConfirmPassword.value;
   let url = registerAvatarContainer.value;
 
   const validName = validateName(userName, 5);
   const validEmail = validateEmail(email);
   const validPassword = validateLength(password, 8);
+  const matchPassword = validateMatch(password, confirmPassword);
 
   if (!validName) {
     validRegister = false;
@@ -99,6 +109,17 @@ async function validate(event) {
       notePasswordContainer,
       registerPasswordContainer,
       "Password should be atleast 8 characters",
+      "text-danger",
+    );
+    return;
+  }
+
+  if (!matchPassword) {
+    validRegister = false;
+    setFeedback(
+      notePasswordContainer,
+      registerConfirmPassword,
+      "Passwords does not match",
       "text-danger",
     );
   }

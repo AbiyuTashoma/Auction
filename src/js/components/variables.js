@@ -23,6 +23,9 @@ export const registerNameContainer = document.querySelector("#register-name");
 export const registerEmailContainer = document.querySelector("#register-email");
 export const registerPasswordContainer =
   document.querySelector("#register-password");
+export const registerConfirmPassword = document.querySelector(
+  "#register-confirm-password",
+);
 export const registerAvatarContainer =
   document.querySelector("#register-avatar");
 export const noteNameContainer = document.querySelector(".note-name");
