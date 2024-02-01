@@ -151,3 +151,10 @@ enddateContainer.oninput = function () {
   clearFeedback(enddateNoteContainer, enddateContainer);
   clearFeedback(listNoteContainer, listNoteContainer);
 };
+
+/**
+ * changes type "text" to "datetime-local" on focus
+ */
+enddateContainer.onfocus = function () {
+  enddateContainer.type = "datetime-local";
+};
