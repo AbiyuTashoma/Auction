@@ -33,7 +33,7 @@ const validName = "student_2";
 
 describe("Verify logged in user can create a list", () => {
   it("opens log in page if user is not logged in", () => {
-    cy.get("button").contains("Create list").click();
+    cy.get("button").contains("Post an Item +").click();
     cy.get("#createlist").submit();
     cy.url().should("include", "src/html/login");
   });
@@ -51,7 +51,7 @@ describe("Verify logged in user can create a list", () => {
         );
       });
 
-    cy.get("button").contains("Create list").click();
+    cy.get("button").contains("Post an Item +").click();
     cy.get("#list-title").type(lTitle);
     cy.get("#list-description").type(lDescription);
     cy.get("#list-media").type(lUrl);
