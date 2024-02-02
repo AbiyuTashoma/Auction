@@ -31,7 +31,7 @@ export async function createFeedHtml(rspns, path = "") {
                         ${element["description"]}
                     </p>
                     <div class="text-center">
-                        <a href="${path}alist.html?id=${element["id"]}" class="custom-btn btn-primary">View List</a>
+                        <a href="${path}alist.html?id=${element["id"]}" class="custom-btn btn-primary">View Item</a>
                     </div>
                 </div>
             </div>
