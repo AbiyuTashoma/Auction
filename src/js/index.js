@@ -27,8 +27,9 @@ async function loadFeed(srt = "created") {
   feedContainer.innerHTML = loading;
   const feedResponse = await apiRequest(feedURL + `&sort=${srt}`);
   if (feedResponse["json"][0]["id"]) {
+    const cleanFeedResponse = await cleanDescription(feedResponse["json"]);
     feedContainer.innerHTML = await createFeedHtml(
-      feedResponse["json"],
+      cleanFeedResponse,
       "src/html/",
     );
     resetOffset(offset);
