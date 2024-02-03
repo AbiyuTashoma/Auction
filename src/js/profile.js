@@ -4,13 +4,16 @@ import {
   BASE_URL,
   profileFeedContainer,
   loading,
+  listingsURL,
 } from "./components/variables.js";
 import { viewProfile } from "./components/renderProfile.js";
 import { apiRequest } from "./components/apiRequest.js";
 import { validateUrl } from "./components/validate.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
 import { refresh } from "./components/reload.js";
-import { createFeedHtml } from "./components/feedHtml.js";
+import { cleanDescription } from "./components/clean_description.js";
+import { createProfileHtml } from "./components/renderProfile.js";
+import { modalForms } from "./components/variables.js";
 
 viewProfile(currentUser, profileInfoContainer);
 
@@ -43,9 +46,14 @@ async function profileLists() {
   }
 
   if (profileFeedResponse["json"]["name"]) {
-    profileFeedContainer.innerHTML = await createFeedHtml(
+    const cleanResponse = await cleanDescription(
       profileFeedResponse["json"]["listings"],
     );
+    profileFeedContainer.innerHTML = createProfileHtml(cleanResponse);
+    modalForms["update"] = document.querySelectorAll("#update-item-form");
+    modalForms["update"].forEach((element) => {
+      element.addEventListener("submit", updatePostItem);
+    });
   } else {
     setFeedback(
       profileFeedContainer,
@@ -57,7 +65,12 @@ async function profileLists() {
   }
 }
 
-profileLists();
+function updatePostItem(event) {
+  event.preventDefault();
+  const itemId = document.querySelector(".show #update-item-form").name;
+  const updateItemUrl = listingsURL + `/${itemId}`;
+  console.log("updated: " + updateItemUrl);
+}
 
 /**
  * validates and updates profile avatar
@@ -117,5 +130,7 @@ async function submitUpdate(event) {
     );
   }
 }
+
+profileLists();
 
 updateAvatarContainer.addEventListener("submit", submitUpdate);
