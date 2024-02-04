@@ -35,7 +35,7 @@ export function viewProfile(prfl, prflContainer) {
 }
 
 /**
- * creates html element from api response object
+ * creates profile html element from api response object
  * @param {Response} rspns json response object
  * @param {string} path relative patch
  * @returns {HTMLElement}
@@ -58,86 +58,76 @@ export function createProfileHtml(rspns, path = "") {
     }
 
     html += `<div class="col">
-            <div class="card h-100 position-relative">
-                <div id="carousel-${i}" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        ${innerCarousel}
+                <div class="card h-100 position-relative">
+                    <div id="carousel-${i}" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            ${innerCarousel}
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-${i}" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carousel-${i}" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel-${i}" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carousel-${i}" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
+                    <div class="card-body">
+                        <h5 class="card-title">${element["title"]}</h5>
+                        <p class="card-text">
+                            ${element["description"]}
+                        </p>
+                        <div class="text-center">
+                            <a href="${path}alist.html?id=${element["id"]}" class="custom-btn btn-primary">View Item</a>
+                        </div>
+                    </div>
+                    <button class="custom-btn btn-primary position-absolute top-100 end-0 translate-middle badge rounded-pill" id="btn-edit-${i}" data-bs-toggle="modal" data-bs-target="#modal-edit-${i}" ${btnState}=true>
+                        edit
                     </button>
                 </div>
-                <div class="card-body">
-                
-                    <h5 class="card-title">${element["title"]}</h5>
-                    <p class="card-text">
-                        ${element["description"]}
-                    </p>
-                    <div class="text-center">
-                        <a href="${path}alist.html?id=${element["id"]}" class="custom-btn btn-primary">View Item</a>
+                <div class="modal fade" id="modal-edit-${i}" tabindex="-1" aria-labelledby="editmodal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body p-3">
+                                <div class="note-updatelist"></div>
+                                <form id="update-item-form" name=${element["id"]}>
+                                    <div class="input-group my-2">
+                                    <input
+                                        type="text"
+                                        id="update-title"
+                                        class="form-control"
+                                        aria-label="Add title"
+                                        value='${element["title"]}'
+                                    />
+                                    </div>
+                                    <div class="note-update-title mb-2"></div>
+                                    <div class="input-group my-2">
+                                    <textarea
+                                        id="update-description"
+                                        class="form-control"
+                                        aria-label="Add description"
+                                    >${element["description"]}</textarea>
+                                    </div>
+                                    <div class="note-update-description mb-2"></div>
+                                    <div class="input-group my-2">
+                                    <input
+                                        type="url"
+                                        id="update-media"
+                                        class="form-control"
+                                        aria-label="Add media url"
+                                        value='${element["media"]}'
+                                    />
+                                    </div>
+                                    <div class="note-update-media mb-2"></div>
+                                    <div class="d-flex justify-content-center gap-2 mt-2">
+                                        <input type="submit" id="btn-update-item" class="custom-btn btn-primary" value="Update Item">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <button class="custom-btn btn-primary position-absolute top-100 end-0 translate-middle badge rounded-pill" id="btn-edit-${i}" data-bs-toggle="modal" data-bs-target="#modal-edit-${i}" ${btnState}=true>
-                    edit
-                </button>
-            </div>
-            <div class="modal fade" id="modal-edit-${i}" tabindex="-1" aria-labelledby="editmodal" aria-hidden="true">
-                              <div class="modal-dialog">
-                                  <div class="modal-content">
-                                      <div class="modal-body p-3">
-                                          <div class="note-createlist"></div>
-                                            <form id="update-item-form" name=${element["id"]}>
-                                                <div class="input-group my-2">
-                                                <input
-                                                    type="text"
-                                                    id="list-title"
-                                                    class="form-control"
-                                                    aria-label="Add title"
-                                                    value=${element["title"]}
-                                                />
-                                                </div>
-                                                <div class="note-title mb-2"></div>
-                                                <div class="input-group my-2">
-                                                <textarea
-                                                    id="list-description"
-                                                    class="form-control"
-                                                    aria-label="Add description"
-                                                >${element["description"]}</textarea>
-                                                </div>
-                                                <div class="note-description mb-2"></div>
-                                                <div type="url" class="input-group my-2">
-                                                <input
-                                                    id="list-media"
-                                                    class="form-control"
-                                                    aria-label="Add media url"
-                                                    value=${element["media"]}
-                                                />
-                                                </div>
-                                                <div class="note-media mb-2"></div>
-                                                <div class="input-group my-2">
-                                                <input
-                                                    type="datetime-local"
-                                                    id="list-enddate"
-                                                    class="form-control"
-                                                    aria-label="Ending date"
-                                                    value=${element["endsAt"]}
-                                                />
-                                                </div>
-                                                <div class="note-enddate mb-2"></div>
-                                                <div class="d-flex justify-content-center gap-2 mt-2">
-                                                  <input type="submit" id="btn-update-item" class="custom-btn btn-primary" value="Update Item">
-                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
-                                              </div>
-                                            </form>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
         </div>`;
 
     i++;
