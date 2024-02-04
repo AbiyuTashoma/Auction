@@ -91,3 +91,6 @@ export const loading = `<div class="text-center">
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>`;
+
+//Edit post item
+export const modalForms = {};

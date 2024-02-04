@@ -4,13 +4,17 @@ import {
   BASE_URL,
   profileFeedContainer,
   loading,
+  listingsURL,
 } from "./components/variables.js";
 import { viewProfile } from "./components/renderProfile.js";
 import { apiRequest } from "./components/apiRequest.js";
-import { validateUrl } from "./components/validate.js";
+import { validateUrl, validateLength } from "./components/validate.js";
+import { toArray } from "./components/stringToArray.js";
 import { setFeedback, clearFeedback } from "./components/displayMessage.js";
 import { refresh } from "./components/reload.js";
-import { createFeedHtml } from "./components/feedHtml.js";
+import { cleanDescription } from "./components/clean_description.js";
+import { createProfileHtml } from "./components/renderProfile.js";
+import { modalForms } from "./components/variables.js";
 
 viewProfile(currentUser, profileInfoContainer);
 
@@ -43,9 +47,14 @@ async function profileLists() {
   }
 
   if (profileFeedResponse["json"]["name"]) {
-    profileFeedContainer.innerHTML = await createFeedHtml(
+    const cleanResponse = await cleanDescription(
       profileFeedResponse["json"]["listings"],
     );
+    profileFeedContainer.innerHTML = createProfileHtml(cleanResponse);
+    modalForms["update"] = document.querySelectorAll("#update-item-form");
+    modalForms["update"].forEach((element) => {
+      element.addEventListener("submit", updatePostItem);
+    });
   } else {
     setFeedback(
       profileFeedContainer,
@@ -57,7 +66,121 @@ async function profileLists() {
   }
 }
 
-profileLists();
+/**
+ * validates and updates list item
+ * @param {event} event
+ */
+async function updatePostItem(event) {
+  event.preventDefault();
+  const itemId = document.querySelector(".show #update-item-form").name;
+  const updateItemUrl = listingsURL + `/${itemId}`;
+
+  let validUpdate = true;
+
+  const titleCtr = document.querySelector(".show #update-title");
+  const descriptionCtr = document.querySelector(".show #update-description");
+  const mediaCtr = document.querySelector(".show #update-media");
+
+  const title = titleCtr.value;
+  const description = descriptionCtr.value;
+  const media = mediaCtr.value;
+  const mediaArray = toArray(media, ",");
+
+  const updateFormNote = document.querySelector(".show .note-updatelist");
+  const updateTitleNote = document.querySelector(".show .note-update-title");
+  const updateDescriptionNote = document.querySelector(
+    ".show .note-update-description",
+  );
+  const updateMediaNote = document.querySelector(".show .note-update-media");
+
+  const validTitle = validateLength(title, 1, 50);
+  const validDescription = validateLength(description, 5);
+
+  if (!validTitle) {
+    validUpdate = false;
+    setFeedback(
+      updateTitleNote,
+      titleCtr,
+      "Title should be between 1 to 50 characters.",
+      "text-danger",
+    );
+  }
+
+  if (!validDescription) {
+    validUpdate = false;
+    setFeedback(
+      updateDescriptionNote,
+      descriptionCtr,
+      "Description should be minimum of 5 characters.",
+      "text-danger",
+    );
+  }
+
+  mediaArray.forEach((element) => {
+    if (!validateUrl(element)) {
+      validUpdate = false;
+      setFeedback(
+        updateMediaNote,
+        mediaCtr,
+        "Add proper url. Urls are separated by comma",
+        "text-danger",
+      );
+      return;
+    }
+  });
+
+  if (validUpdate) {
+    const updateData = {
+      title: `${title}`,
+      description: `${description}`,
+      media: mediaArray,
+    };
+
+    const updateOption = {
+      method: "PUT",
+      body: JSON.stringify(updateData),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
+
+    const updateResponse = await apiRequest(updateItemUrl, updateOption);
+
+    console.log(updateResponse);
+
+    if (updateResponse["json"]["id"]) {
+      setFeedback(
+        updateFormNote,
+        updateFormNote,
+        "Item successfully updated",
+        "text-success",
+      );
+      setTimeout(refresh, 2000);
+    } else {
+      setFeedback(
+        updateFormNote,
+        updateFormNote,
+        `Contact us and provide error code: ${updateResponse["json"]["statusCode"]}`,
+        "text-danger",
+      );
+    }
+  }
+
+  titleCtr.oninput = function () {
+    clearFeedback(updateTitleNote, titleCtr);
+    clearFeedback(updateFormNote, updateFormNote);
+  };
+
+  descriptionCtr.oninput = function () {
+    clearFeedback(updateDescriptionNote, descriptionCtr);
+    clearFeedback(updateFormNote, updateFormNote);
+  };
+  mediaCtr.oninput = function () {
+    clearFeedback(updateMediaNote, mediaCtr);
+    clearFeedback(updateFormNote, updateFormNote);
+  };
+}
 
 /**
  * validates and updates profile avatar
@@ -117,5 +240,7 @@ async function submitUpdate(event) {
     );
   }
 }
+
+profileLists();
 
 updateAvatarContainer.addEventListener("submit", submitUpdate);
