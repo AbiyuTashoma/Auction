@@ -11,7 +11,7 @@ beforeEach(() => {
 });
 
 const updateAvatarResponse = {
-  name: "student_2",
+  name: "user_name2",
   id: "dad7db9c-8037-455c-8321-5da34f223d4c",
   media: ["https://images.unsplash.com/photo"],
   credit: 900,
@@ -19,10 +19,11 @@ const updateAvatarResponse = {
 
 const uUrl = "http://www";
 
-const validEmail = "student2@stud.noroff.no";
+const validEmail = "user_name2@stud.noroff.no";
 const validPassword = "12345678";
-const validName = "student_2";
-const validUrl = "https://images.unsplash.com/photo";
+const validName = "user_name2";
+const validUrl =
+  "https://plus.unsplash.com/premium_photo-1678718713393-2b88cde9605b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 describe("Verify only logged in can create list", () => {
   it("submits list form if user is logged in", () => {

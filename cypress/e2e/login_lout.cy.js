@@ -2,9 +2,9 @@ beforeEach(() => {
   cy.visit("/");
 });
 
-const validEmail = "student2@stud.noroff.no";
+const validEmail = "user_name2@stud.noroff.no";
 const validPassword = "12345678";
-const validName = "student_2";
+const validName = "user_name2";
 
 describe("Verify login and logout functionality", () => {
   it("logs in user with valid credentials, logs out and clears local storage", () => {

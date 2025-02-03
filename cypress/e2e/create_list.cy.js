@@ -27,9 +27,9 @@ const validListDescription = "Valid Description";
 const validListUrl = "https://unsplash.com/photos/blue";
 const ValidListDate = "2030-01-12T02:00";
 
-const validEmail = "student2@stud.noroff.no";
+const validEmail = "user_name2@stud.noroff.no";
 const validPassword = "12345678";
-const validName = "student_2";
+const validName = "user_name2";
 
 describe("Verify logged in user can create a list", () => {
   it("opens log in page if user is not logged in", () => {
