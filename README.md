@@ -1,4 +1,7 @@
 # Auction
+![bilde](https://github.com/user-attachments/assets/9aa6d3e2-e2bb-4383-a9f2-4edfd64392af)
+
+Auction website
 
 ## Description
 
@@ -25,7 +28,7 @@ Auction is a platform where people and entities sell and buy both used and new p
 - Update listed item
 - Update profile avatar
 
-## Workflow
+### Workflow
 
 - Unit testing with Jest
 - End-to-End testing with Cypress
@@ -75,7 +78,7 @@ https://github.com/AbiyuTashoma/Auction
 - Open index.html with live-server
 ```
 
-5. testing:
+5. Testing:
 
 ```
 - npm run test
