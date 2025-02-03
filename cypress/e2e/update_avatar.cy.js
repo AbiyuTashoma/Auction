@@ -27,7 +27,7 @@ const validUrl =
 
 describe("Verify only logged in can create list", () => {
   it("submits list form if user is logged in", () => {
-    cy.get(".user-menu").click({ force: true });
+    cy.get(".user-menu").click();
     cy.get(".login-btn").click();
     cy.get("#login-email").type(validEmail);
     cy.get("#login-password").type(validPassword);
@@ -39,7 +39,7 @@ describe("Verify only logged in can create list", () => {
         );
       });
 
-    cy.get(".user-menu").click({ force: true });
+    cy.get(".user-menu").click();
     cy.get(".profile-btn").click();
     cy.get("#edit-btn").click();
     cy.get("#edit-avatar").type(uUrl);
