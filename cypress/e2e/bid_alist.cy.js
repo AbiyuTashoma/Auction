@@ -15,9 +15,9 @@ const cBidResponse = {
   id: "dad7db",
 };
 
-const bEmail = "student2@stud.noroff.no";
+const bEmail = "user_name2@stud.noroff.no";
 const bPassword = "12345678";
-const bName = "student_2";
+const bName = "user_name2";
 
 describe("Verify user is able to bid on a list", () => {
   it("allows users to bid on a list and display success message", () => {
